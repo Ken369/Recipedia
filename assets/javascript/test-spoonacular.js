@@ -1,4 +1,4 @@
-
+//---------------functions-----------------
 function randomKey(){
     const KenKey = "c969a48f9cee4515b05f7efc8cf78b6b";
     const VasaviKey = "4c88548ce7104df58f4630127aabfa78";
@@ -24,7 +24,21 @@ function ajaxRequest(URL){
   }
 
 
-  
+
 function displayResults(ajaxResponse){
+    imgTag = $('<img>');
+    pTag = $('<p>');
+    console.log(ajaxResponse);
+    pTag = ajaxResponse.results[0].title
+    imgTag.attr('src',ajaxResponse.results[0].image);
+    $('#results').append(pTag);
+    $('#results').append(imgTag);
 
 }
+
+function search(){
+    url = constructQuery;
+    ajaxRequest(url);
+}
+//------------- event listener ----------------
+$('#search-button').click(search);
