@@ -12,7 +12,7 @@ function randomKey(){
 function constructQuery(){
     const endpoint = "https://api.spoonacular.com/recipes/search?"
     const APIkey = randomKey();
-    // const query = "query="+$('#search-query').val()
+    const query = "query="+$('#search-query').val()
     const url = endpoint+query+APIkey
     console.log(url);
     return url;
@@ -35,12 +35,13 @@ function displayResults(ajaxResponse){
     imgTag.attr('src',ajaxResponse.results[0].image);
     $('#results').append(pTag);
     $('#results').append(imgTag);
-
 }
 
 function search(){
-    url = constructQuery;
+    url = constructQuery();
     ajaxRequest(url);
 }
 //------------- event listener ----------------
+
+
 $('#search-button').click(search);
