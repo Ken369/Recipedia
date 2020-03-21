@@ -5,14 +5,16 @@ function randomKey(){
     const WayneKey = "bbb86315753e407180066c6762ddee79";
     const keyArray = [KenKey,WayneKey,VasaviKey];
     const randomKey = keyArray[Math.floor(Math.random()*length.keyArray)];
+    console.log(randomKey);
     return randomKey;
 }
 
 function constructQuery(){
     const endpoint = "https://api.spoonacular.com/recipes/search?"
     const APIkey = randomKey();
-    const query = "query="+$('#search-query').val()
+    // const query = "query="+$('#search-query').val()
     const url = endpoint+query+APIkey
+    console.log(url);
     return url;
 }
 
@@ -26,9 +28,9 @@ function ajaxRequest(URL){
 
 
 function displayResults(ajaxResponse){
+    console.log(ajaxResponse);
     imgTag = $('<img>');
     pTag = $('<p>');
-    console.log(ajaxResponse);
     pTag = ajaxResponse.results[0].title
     imgTag.attr('src',ajaxResponse.results[0].image);
     $('#results').append(pTag);
