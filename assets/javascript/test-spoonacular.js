@@ -36,8 +36,8 @@ function displayResults(ajaxResponse){
     pTag = $('<p>');
     pTag = ajaxResponse.results[0].title
     imgTag.attr('src',ajaxResponse.baseUri+ajaxResponse.results[0].image);
-    $('#results').append(pTag);
-    $('#results').append(imgTag);
+    $('#search-results').append(pTag);
+    $('#search-results').append(imgTag);
 }
 
 function search(){
