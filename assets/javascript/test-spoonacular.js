@@ -78,7 +78,7 @@ function constructQuery(){
 }
 
 function endpointConstructor(){
-    
+
 }
 
 function ajaxRequest(URL){
@@ -104,10 +104,18 @@ function search(){
     url = constructQuery();
     ajaxRequest(url);
 }
-//------------- event listener ----------------
+//------------- event listeners ----------------
+$('.fa-search').click(function(){
+    search();
+});
+
+$('#search-query').on('keypress',function(event) {
+    if(event.which === 13) {
+        event.preventDefault();
+        search();
+    }
+});
 
 
-$('#search-button').click(search);
-// some test java
 
 mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
