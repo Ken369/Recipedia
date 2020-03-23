@@ -47,6 +47,19 @@
         "Tree Nut",
         "Wheat",
     ]
+    //supported list of diet types.
+    const diets =[
+        "gluten free",
+        "ketogenic",
+        "vegetarien",
+        "lacto-vegetarian",
+        "ovo-vegetarian",
+        "vegan",
+        "pescetarian",
+        "paleo",
+        "primal",
+        "whole30"
+    ]
 
 //---------------functions-----------------
 function randomKey(){
