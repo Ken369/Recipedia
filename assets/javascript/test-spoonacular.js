@@ -48,3 +48,6 @@ function search(){
 
 
 $('#search-button').click(search);
+// some test java
+
+mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
