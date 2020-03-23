@@ -1,3 +1,53 @@
+//--------------global Variables-------------------
+
+
+
+//---------------placeholders-----------------------
+    // supported cuisine types
+    const cuisine = [
+        "African",
+        "American",
+        "British",
+        "Cajun",
+        "Caribbean",
+        "Chinese",
+        "Eastern European",
+        "European",
+        "French",
+        "German",
+        "Greek",
+        "Indian",
+        "Irish",
+        "Italian",
+        "Japanese",
+        "Jewish",
+        "Korean",
+        "Latin American",
+        "Mediterranean",
+        "Mexican",
+        "Middle Eastern",
+        "Nordic",
+        "Southern",
+        "Spanish",
+        "Thai",
+        "Vietnamese"
+    ]
+    // list of supported intolerences 
+    const intolerances = [
+        "Dairy",
+        "Egg",
+        "Gluten",
+        "Grain",
+        "Peanut",
+        "Seafood",
+        "Sesame",
+        "Shellfish",
+        "Soy",
+        "Sulfite",
+        "Tree Nut",
+        "Wheat",
+    ]
+
 //---------------functions-----------------
 function randomKey(){
     const KenKey = "c969a48f9cee4515b05f7efc8cf78b6b";
@@ -11,14 +61,24 @@ function randomKey(){
     return randomKey;
 }
 
+function getQuery(){
+    searchQuery = $('#search-query').val()
+    return searchQuery;
+}
+
 function constructQuery(){
-    const endpoint = "https://api.spoonacular.com/recipes/search?";
-    const userKey = randomKey();
-    const APIkey = "&apiKey="+userKey;
-    const query = "query="+$('#search-query').val();
+    const number = 10 // number of results to return
+    const endpoint = "https://api.spoonacular.com/recipes/search?"; //base endpoint
+    const userKey = randomKey(); //api key
+    const APIkey = "&apiKey="+userKey; //
+    const query = "query="+getQuery();
     const url = endpoint+query+APIkey
     console.log(url);
     return url;
+}
+
+function endpointConstructor(){
+    
 }
 
 function ajaxRequest(URL){
