@@ -79,11 +79,11 @@ function getQuery(){
     return searchQuery;
 }
 
-function constructQuery(){
+function constructEndPointQuery(){
     const excludeFoods = "placeholder" //
     const number = 10 // number of results to return
     const endpoint = "https://api.spoonacular.com/recipes/search?"; //base endpoint
-    const userKey = randomKey(); //api key
+    const userKey = randomKey(); //api key     
     const APIkey = "&apiKey="+userKey; //
     const query = "query="+getQuery();
     const url = endpoint+query+APIkey
