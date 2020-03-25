@@ -64,17 +64,6 @@ function ajaxRequest(URL){
   }
 
 
-
-function displayResults(ajaxResponse){
-    console.log(ajaxResponse);
-    imgTag = $('<img>');
-    pTag = $('<p>');
-    pTag = ajaxResponse.results[0].title
-    imgTag.attr('src',ajaxResponse.baseUri+ajaxResponse.results[0].image);
-    $('#search-results').append(pTag);
-    $('#search-results').append(imgTag);
-}
-
 function search(){
     url = constructEndpointQuery();
     ajaxRequest(url);
