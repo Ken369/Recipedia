@@ -26,6 +26,7 @@ function displayResults(ajaxResponse) {
 
 
   }
+  
   $("#search-results").on("click", ".list-recipes", function(){
     var div =  $("<div class='recipe-info'>");
     var processingTime = recipeArray[0].readyInMinutes;
@@ -37,21 +38,4 @@ function displayResults(ajaxResponse) {
 })
 }
 
-
-function search(){
-    getQuery;
-    url = constructEndpointQuery();
-    ajaxRequest(url);
-}
-//------------- event listeners ----------------
-$(".fa-search").click(function() {
-  search();
-});
-
-$("#search-query").on("keypress", function(event) {
-  if (event.which === 13) {
-    event.preventDefault();
-    search();
-  }
-});
 

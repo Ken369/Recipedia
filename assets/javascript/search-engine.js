@@ -60,7 +60,7 @@ function ajaxRequest(URL){
     $.ajax({
         url: URL,
         method: "GET"
-      }).then(displayResults);
+      }).then(displayResults);//Display results file in another file
   }
 
 
