@@ -17,54 +17,127 @@
 </head>
 <body>
     <!-- NavBar -->
-
     <nav>
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Recipedia</a>
+        <a href="#!" class="brand-logo">Recipedia</a>
         </div>
-      </nav>   
+    </nav>   
 
-    
-    <fieldset id="search-bar">
-        <form>
-            <input type="text" id="search-query" placeholder="cheeseburger?">
-            <i class="fa fa-search"></i>
-        </form>
-        <form id="advanced-search">
-            <!-- dropdown box for cuisine type possibly a search bar and dropdown in one, to search for all dropdowns-->
-         <div>
-             <input type="text" id="cuisine" placeholder="cuisine">
-            <label for="cuisine">cuisine</label>
+    <!--Main Body Container w/Grids-->
+    <div class="row">
+        <div class="col m3"></div>
+        <div class="col s8 m6">
+            <fieldset id="search-bar">
+                <form>
+                    <input type="text" id="search-query" placeholder="cheeseburger?">
+                    <i class="fa fa-search"></i>
+                </form>
+                <form id="advanced-search">
+                    <!-- dropdown box for cuisine type possibly a search bar and dropdown in one, to search for all dropdowns-->
+                 <div>
+                     <input type="text" id="cuisine" placeholder="cuisine">
+                    <label for="cuisine">cuisine</label>
+                </div>
+                 <div>
+                     <input type="text" id="diet" placeholder="vegeterian,">
+                    <label for="diet">Diet</label>
+                </div>
+                 <div>
+                     <input type="text" id="exclude-ingredients" placeholder="prawn,chilli,...anything else?">
+                    <label for="exclude-ingredients">excluding ingredients</label>
+                </div>
+                 <div>
+                     <input type="text" id=intolerences placeholder="gluten, pineapple,...anything else?">
+                    <label for="intolerences"> intolerences</label>
+                </div>
+        
+                </form>
+            </fieldset>
         </div>
-         <div>
-             <input type="text" id="diet" placeholder="vegeterian,">
-            <label for="diet">Diet</label>
-        </div>
-         <div>
-             <input type="text" id="exclude-ingredients" placeholder="prawn,chilli,...anything else?">
-            <label for="exclude-ingredients">excluding ingredients</label>
-        </div>
-         <div>
-             <input type="text" id=intolerences placeholder="gluten, pineapple,...anything else?">
-            <label for="intolerences"> intolerences</label>
+        <div class="col s2 m3"></div>
+    </div>
+
+    <div class="row">
+        <!--Favourites Bar-->
+        <div class="col s12 m4">
+            <div class="card light-grey darken-1">Favourites
+                <aside id="favourites">
+                <div class="card light-grey darken-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                              <img src="https://via.placeholder.com/150" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s10">
+                              <span class="black-text">
+                                Chicken Parma 
+                              </span>
+                            </div>                
+                </div>
+
+            <div class="card light-grey darken-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                              <img src="https://via.placeholder.com/150" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s10">
+                              <span class="black-text">
+                                Chicken Parma 
+                              </span>
+                            </div>                
+            </div>
+            </aside>
+            </div>
         </div>
 
-        </form>
-    </fieldset>
-    
-    
+        <!--This is where the cards will be displayed sequentially-->
+        <div class="col s12 m8">
+            <!--Card Base-->
+            <div class="card light-grey darken-1">
+                <aside id="favourites">
+                <div class="card light-grey darken-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                              <img src="https://via.placeholder.com/150" alt="" class="responsive-img">
+                            </div>
+                            <div class="col s10">
+                              <span class="black-text">
+                                <p class="recipename">Title</p>
+                                <p class="recipetext">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid eos asperiores fugiat laudantium sunt doloribus necessitatibus quae suscipit inventore hic nam, recusandae, delectus magni mollitia. Sint iusto inventore suscipit aut.
+                                </p>
+                              </span>
+                            </div>                
+            </div>
+            <!--Card Base-->
+            <div class="card light-grey darken-1">
+                <aside id="favourites">
+                <div class="card light-grey darken-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                              <img src="https://via.placeholder.com/150" alt="" class="responsive-img">
+                            </div>
+                            <div class="col s10">
+                              <span class="black-text">
+                                <p class="recipename">Title</p>
+                                <p class="recipetext">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid eos asperiores fugiat laudantium sunt doloribus necessitatibus quae suscipit inventore hic nam, recusandae, delectus magni mollitia. Sint iusto inventore suscipit aut.
+                                </p>
+                              </span>
+                            </div>                
+            </div>
+            
+        </div>
+            
 
-    <aside id="favourites">
-        <!-- EXAMPLE MATERIAL DESIGN BUTTON  -->
-        <button class="mdc-button foo-button">
-            <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Button</span>
-        </button>
-
-    </aside>
     <section id="search-results">
 
+
+
     </section>
+
+
+    
+
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- material quick start js -->
@@ -72,5 +145,11 @@
     <!-- custom js -->
     <script src="./assets/javascript/test-spoonacular.js"></script>
     
+    </div>
+
+
+
+    
 </body>
+
 </html>
