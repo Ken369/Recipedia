@@ -8,9 +8,8 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- custom css -->
     <link rel="stylesheet" href="./assets/css/style.css">
-   
- <!-- Compiled and minified CSS -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--  MDC icons-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
@@ -22,7 +21,7 @@
         <a href="#!" class="brand-logo">Recipedia</a>
         </div>
     </nav>   
-
+  
     <!--Main Body Container w/Grids-->
     <div class="row">
         <div class="col m3"></div>
@@ -32,6 +31,7 @@
                     <input type="text" id="search-query" placeholder="cheeseburger?">
                     <i class="fa fa-search"></i>
                 </form>
+                <button id="advanced-search-button">Advanced Search</button>
                 <form id="advanced-search">
                     <!-- dropdown box for cuisine type possibly a search bar and dropdown in one, to search for all dropdowns-->
                  <div>
@@ -49,10 +49,10 @@
                  <div>
                      <input type="text" id=intolerences placeholder="gluten, pineapple,...anything else?">
                     <label for="intolerences"> intolerences</label>
-                </div>
-        
+                  </div>
                 </form>
             </fieldset>
+
         </div>
         <div class="col s2 m3"></div>
     </div>
@@ -127,23 +127,18 @@
             </div>
             
         </div>
-            
 
     <section id="search-results">
 
 
-
     </section>
-
-
-    
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- material quick start js -->
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <!-- custom js -->
     <script src="./assets/javascript/test-spoonacular.js"></script>
+    <script src="./assets/javascript/search-types.js"></script>
+    <script src="./assets/javascript/search-engine.js"></script>
     
     </div>
 
