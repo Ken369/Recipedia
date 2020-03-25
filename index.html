@@ -23,15 +23,18 @@
     </nav>   
   
     <!--Main Body Container w/Grids-->
-    <div class="row">
-        <div class="col m3"></div>
+    <div class="row search" style="
+    margin-left: 0px;
+    margin-right: 0px;
+">
+        <div class="col s2 m3"></div>
         <div class="col s8 m6">
             <fieldset id="search-bar">
                 <form class="main-search-bar">
                     <input type="text" id="search-query" placeholder="cheeseburger?">
                     <i class="fa fa-search"></i>
                 </form>
-                <button id="advanced-search-button">Advanced Search</button>
+                
                 <form id="advanced-search">
                     <!-- dropdown box for cuisine type possibly a search bar and dropdown in one, to search for all dropdowns-->
                  <div>
@@ -52,6 +55,7 @@
                   </div>
                 </form>
             </fieldset>
+            <button id="advanced-search-button" class="waves-effect waves-light btn">Advanced Search</button>
 
         </div>
         <div class="col s2 m3"></div>
@@ -60,7 +64,8 @@
     <div class="row">
         <!--Favourites Bar-->
         <div class="col s12 m4">
-            <div class="card light-grey darken-1">Favourites
+            <div class="card light-grey darken-1">
+                <img src="assets/images/star.png" width="20px">
                 <aside id="favourites">
                 <div class="card light-grey darken-1">
                         <div class="row valign-wrapper">
@@ -74,6 +79,7 @@
                             </div>                
                 </div>
 
+                
             <div class="card light-grey darken-1">
                         <div class="row valign-wrapper">
                             <div class="col s2">
@@ -101,7 +107,7 @@
                             </div>
                             <div class="col s10">
                               <span class="black-text">
-                                <p class="recipename">Title</p>
+                                <p id="recipename">Title</p>
                                 <p class="recipetext">
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid eos asperiores fugiat laudantium sunt doloribus necessitatibus quae suscipit inventore hic nam, recusandae, delectus magni mollitia. Sint iusto inventore suscipit aut.
                                 </p>
@@ -118,14 +124,14 @@
                             </div>
                             <div class="col s10">
                               <span class="black-text">
-                                <p class="recipename">Title</p>
+                                <p id="recipename">Title</p>
                                 <p class="recipetext">
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid eos asperiores fugiat laudantium sunt doloribus necessitatibus quae suscipit inventore hic nam, recusandae, delectus magni mollitia. Sint iusto inventore suscipit aut.
                                 </p>
                               </span>
                             </div>                
             </div>
-            
+    
         </div>
 
     <section id="search-results">
