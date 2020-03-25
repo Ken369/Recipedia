@@ -8,9 +8,8 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- custom css -->
     <link rel="stylesheet" href="./assets/css/style.css">
-   
- <!-- Compiled and minified CSS -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--  MDC icons-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
@@ -30,6 +29,7 @@
             <input type="text" id="search-query" placeholder="cheeseburger?">
             <i class="fa fa-search"></i>
         </form>
+        <button id="advanced-search-button">Advanced Search</button>
         <form id="advanced-search">
             <!-- dropdown box for cuisine type possibly a search bar and dropdown in one, to search for all dropdowns-->
          <div>
@@ -37,7 +37,7 @@
             <label for="cuisine">cuisine</label>
         </div>
          <div>
-             <input type="text" id="diet" placeholder="vegeterian,">
+             <input type="text" id="diet" placeholder="vegetarian,">
             <label for="diet">Diet</label>
         </div>
          <div>
@@ -55,22 +55,20 @@
     
 
     <aside id="favourites">
-        <!-- EXAMPLE MATERIAL DESIGN BUTTON  -->
-        <button class="mdc-button foo-button">
-            <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Button</span>
-        </button>
+      
     </aside>
-    
+
     <section id="search-results">
 
     </section>
+
+
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- material quick start js -->
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <!-- custom js -->
     <script src="./assets/javascript/test-spoonacular.js"></script>
+    <script src="./assets/javascript/search-types.js"></script>
+    <script src="./assets/javascript/search-engine.js"></script>
     
 </body>
 </html>

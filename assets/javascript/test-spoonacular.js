@@ -1,65 +1,4 @@
-//--------------global Variables-------------------
 
-
-
-//---------------placeholders-----------------------
-    // supported cuisine types
-    const cuisine = [
-        "African",
-        "American",
-        "British",
-        "Cajun",
-        "Caribbean",
-        "Chinese",
-        "Eastern European",
-        "European",
-        "French",
-        "German",
-        "Greek",
-        "Indian",
-        "Irish",
-        "Italian",
-        "Japanese",
-        "Jewish",
-        "Korean",
-        "Latin American",
-        "Mediterranean",
-        "Mexican",
-        "Middle Eastern",
-        "Nordic",
-        "Southern",
-        "Spanish",
-        "Thai",
-        "Vietnamese"
-    ]
-    // list of supported intolerences 
-    const intolerances = [
-        "Dairy",
-        "Egg",
-        "Gluten",
-        "Grain",
-        "Peanut",
-        "Seafood",
-        "Sesame",
-        "Shellfish",
-        "Soy",
-        "Sulfite",
-        "Tree Nut",
-        "Wheat",
-    ]
-    //supported list of diet types.
-    const diets =[
-        "gluten free",
-        "ketogenic",
-        "vegetarien",
-        "lacto-vegetarian",
-        "ovo-vegetarian",
-        "vegan",
-        "pescetarian",
-        "paleo",
-        "primal",
-        "whole30"
-    ]
 
 //---------------functions-----------------
 function randomKey(){
@@ -75,11 +14,13 @@ function randomKey(){
 }
 
 function getQuery(){
-    searchQuery = $('#search-query').val()
+    searchQuery = $('#search-query').val();
+   
+
     return searchQuery;
 }
 
-function constructEndPointQuery(){
+function constructEndpointQuery(){
     const excludeFoods = "placeholder" //
     const number = 10 // number of results to return
     const endpoint = "https://api.spoonacular.com/recipes/search?"; //base endpoint
@@ -115,7 +56,8 @@ function displayResults(ajaxResponse){
 }
 
 function search(){
-    url = constructQuery();
+    getQuery;
+    url = constructEndpointQuery();
     ajaxRequest(url);
 }
 //------------- event listeners ----------------
@@ -129,7 +71,3 @@ $('#search-query').on('keypress',function(event) {
         search();
     }
 });
-
-
-
-mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
