@@ -2,15 +2,15 @@ body{
     background-color: wheat;
 }
 
-.nav-wrapper{
-    background-color: turquoise;
-}
-
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-  }
+}
+
+.nav-wrapper{
+    background-color: teal;
+}
 
   main {
     flex: 1 0 auto;
@@ -22,4 +22,9 @@ body {
   justify-content: start;
   align-content: center;
   align-items: center;
+}
+
+.recipename{
+    font-weight: bold;
+    
 }
