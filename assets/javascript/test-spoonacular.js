@@ -1,63 +1,3 @@
-//--------------global Variables-------------------
-
-//---------------placeholders-----------------------
-// supported cuisine types
-const cuisine = [
-  "African",
-  "American",
-  "British",
-  "Cajun",
-  "Caribbean",
-  "Chinese",
-  "Eastern European",
-  "European",
-  "French",
-  "German",
-  "Greek",
-  "Indian",
-  "Irish",
-  "Italian",
-  "Japanese",
-  "Jewish",
-  "Korean",
-  "Latin American",
-  "Mediterranean",
-  "Mexican",
-  "Middle Eastern",
-  "Nordic",
-  "Southern",
-  "Spanish",
-  "Thai",
-  "Vietnamese"
-];
-// list of supported intolerences
-const intolerances = [
-  "Dairy",
-  "Egg",
-  "Gluten",
-  "Grain",
-  "Peanut",
-  "Seafood",
-  "Sesame",
-  "Shellfish",
-  "Soy",
-  "Sulfite",
-  "Tree Nut",
-  "Wheat"
-];
-//supported list of diet types.
-const diets = [
-  "gluten free",
-  "ketogenic",
-  "vegetarien",
-  "lacto-vegetarian",
-  "ovo-vegetarian",
-  "vegan",
-  "pescetarian",
-  "paleo",
-  "primal",
-  "whole30"
-];
 
 //---------------functions-----------------
 function randomKey() {
@@ -72,21 +12,24 @@ function randomKey() {
   return randomKey;
 }
 
-function getQuery() {
-  searchQuery = $("#search-query").val();
-  return searchQuery;
+
+function getQuery(){
+    searchQuery = $('#search-query').val();
+   
+
+    return searchQuery;
 }
 
-function constructQuery() {
-  const excludeFoods = "placeholder"; //
-  const number = 10; // number of results to return
-  const endpoint = "https://api.spoonacular.com/recipes/search?"; //base endpoint
-  const userKey = randomKey(); //api key
-  const APIkey = "&apiKey=" + userKey; //
-  const query = "query=" + getQuery();
-  const url = endpoint + query + APIkey;
-  console.log(url);
-  return url;
+function constructEndpointQuery(){
+    const excludeFoods = "placeholder" //
+    const number = 10 // number of results to return
+    const endpoint = "https://api.spoonacular.com/recipes/search?"; //base endpoint
+    const userKey = randomKey(); //api key     
+    const APIkey = "&apiKey="+userKey; //
+    const query = "query="+getQuery();
+    const url = endpoint+query+APIkey
+    console.log(url);
+    return url;
 }
 
 function endpointConstructor() {}
@@ -136,9 +79,11 @@ function displayResults(ajaxResponse) {
 })
 }
 
-function search() {
-  url = constructQuery();
-  ajaxRequest(url);
+
+function search(){
+    getQuery;
+    url = constructEndpointQuery();
+    ajaxRequest(url);
 }
 //------------- event listeners ----------------
 $(".fa-search").click(function() {
@@ -152,6 +97,3 @@ $("#search-query").on("keypress", function(event) {
   }
 });
 
-
-
-mdc.ripple.MDCRipple.attachTo(document.querySelector(".foo-button"));
