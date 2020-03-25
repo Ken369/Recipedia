@@ -45,7 +45,7 @@ function constructEndpointQuery(){
     const exclusions = "&exclusions="+searchParameters.exclusions;
     const userKey = randomKey(); //api key     
     const APIkey = "&apiKey="+userKey; //
-    const endpoint ="";
+    let endpoint;
     if (searchParameters.advancedSearch){
         endpoint = base+query+number+instructionsRequired+cuisines+diet+intolerances+exclusions+APIkey;
     } else {
@@ -76,7 +76,6 @@ function displayResults(ajaxResponse){
 }
 
 function search(){
-    getQuery;
     url = constructEndpointQuery();
     ajaxRequest(url);
 }
@@ -97,4 +96,11 @@ $('#search-query').on('keypress',function(event) {
 $('#advanced-search-button').click(function(){
     $("#advanced-search").toggle("slow");
 });
+
+$('#advanced-search').on('keypress', function(event){
+    element = $(event.target);
+    if (element.is('input') && event.which === 13){
+        search();
+    }
+})
 
