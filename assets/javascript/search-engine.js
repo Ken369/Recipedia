@@ -94,12 +94,12 @@ $('#advanced-search').on('keypress', function(event){
 
 //Clicking recipe in a list
 $("#search-results").on("click", ".list-recipes", function(event){
-    console.log(event.currentTarget.getAttribute("data-id"));
-    const recipeId = event.currentTarget.getAttribute("data-id");
+    console.log($(event.target).attr("data-id"));
+    const recipeId = $(event.target).attr("data-id");
     //const recipes = event.currentTarget.innerText;
     const userKey = randomKey(); //api key     
     const APIkey = "&apiKey="+userKey; 
-    const IngURL = "https://api.spoonacular.com/recipes/" + recipeId + "/ingredientWidget.json";
+    const IngURL = "https://api.spoonacular.com/recipes/" + recipeId + "/information?includeNutrition=false"+APIkey;
   $.ajax({
       url: IngURL,
       method: "GET"
