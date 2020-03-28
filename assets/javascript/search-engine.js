@@ -99,7 +99,7 @@ $("#search-results").on("click", ".list-recipes", function(event){
     //const recipes = event.currentTarget.innerText;
     const userKey = randomKey(); //api key     
     const APIkey = "&apiKey="+userKey; 
-    const IngURL = "https://api.spoonacular.com/recipes/" + recipeId + "/ingredientWidget";
+    const IngURL = "https://api.spoonacular.com/recipes/" + recipeId + "/ingredientWidget.json";
   $.ajax({
       url: IngURL,
       method: "GET"
