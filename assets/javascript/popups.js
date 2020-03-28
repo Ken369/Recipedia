@@ -20,19 +20,43 @@
 </div>
 `
 
-const recipe = {
-    title:null,
-    img:null,
-    servings:null,
-    prepTime:null,
-    cookTime:null,
-    totalTime:null,
-    ingredientList:null,
-    methodList:null
-}
 
 
+//Clicking recipe in a list
+$("#search-results").on("click", ".list-recipes", function(event) {
+    console.log($(event.target).attr("data-id"));
+    const recipeId = $(event.target).attr("data-id");
+    //const recipes = event.currentTarget.innerText;
+    const userKey = randomKey(); //api key
+    const APIkey = "&apiKey=" + userKey;
+    const IngURL =
+      "https://api.spoonacular.com/recipes/" +
+      recipeId +
+      "/information?includeNutrition=false" +
+      APIkey;
+      ajaxRequest(IngURL,getFullRecipe);
+});
+    
+    function getFullRecipe(response){
+      console.log(response);
+      const recipe = {
+        title: response.title,
+        titleAttr: response.id,
+        img: response.image,
+        servings: response.servings,
+        prepTime: response.preparationMinutes,
+        totalTime: response.readyInMinutes,
+        ingredientList: response.extendedIngredients,
+        methodList: response.analyzedInstructions[0].steps
+      }
 
+    for(const property in recipe){
+      console.log(recipe[property]);
+    }
+    const recipeModal = createModal(recipe);
+    $('body').append(recipeModal);
+  }
+  
 
 function createModal (recipe) {
 //---------------------- modal STRUCTURE -----------------------
@@ -41,9 +65,9 @@ function createModal (recipe) {
     modalBody = $('<div>').addClass("modal-body");
     buttonContainer = $('<div>').addClass("button-container");
     favouriteButton = $('<button>').addClass("favourite-button");
-    heartIcon = $('<i>').addClass("fas fa-heart");
+    heartIcon = $('<i>').addClass("fa fa-heart");
     shoppingCart = $('<button>').addClass("cart-button");
-    cartIcon = $('<i>').addClass("fas fa-cart-plus");
+    cartIcon = $('<i>').addClass("fa fa-cart-plus");
         // assemble button container
         favouriteButton.append(heartIcon);
         shoppingCart.append(cartIcon);
@@ -61,7 +85,7 @@ function createModal (recipe) {
     //create the servings content
     servingContainer = $('<div>').addClass("serving-container");
     servings = $('<h5>').addClass("servings");
-    userPlusIcon = $('<i>').addClass("fas fa-user-plus");
+    userPlusIcon = $('<i>').addClass("fa fa-user-plus");
         // fill out and append
         servings.text("Serves: "+recipe.servings);
         servingContainer.append(servings,userPlusIcon);
@@ -80,7 +104,7 @@ function createModal (recipe) {
         timeInfoContainer.append(prepTime,stopwatchIcon,totalTime);
         timeContainer.append(timeInfoContainer);
         //set width of prep-bar for effect
-        prepTimePercent = (recipe.prepTime/recipe.totalTime);
+        prepTimePercent = (recipe.prepTime/recipe.totalTime)*100;
         prepBar.css("width", prepTimePercent+"%");
         totalBar.append(prepBar);
         timeContainer.append(totalBar);
@@ -107,10 +131,10 @@ function createModal (recipe) {
 
     //create the lists to be filled out
     ingredientList = $('<ul>').addClass("list-body");
-    methodList = $('<ul>').addClass("list-body");
+    methodList = $('<ol>').addClass("list-body");
         //define the content of these components
         //fill out ingredient list by looping through ingredients.
-        reicpe.ingredientList.forEach(ingredient => {
+        recipe.ingredientList.forEach(ingredient => {
             const listItem = $('<li>');
             const name = ingredient.name;
             const consistency = ingredient.consistency;

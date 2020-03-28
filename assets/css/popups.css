@@ -4,18 +4,75 @@
 
 .modal-container {
     background-color: rgba(0,0,0,0.4);
-    display: none;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    display: block;
     position: fixed;
     width: 100%;
-    height:auto;
+    height:100%;
+    padding-top: 15%;
 }
 
 .modal-body {
+    padding:20px;
+    width: 80%;
+    border: 2px solid teal;
+    background-color: wheat;
+    margin:auto;
 
 }
 
+.recipe-image{
+    width:300px;
+    height:auto;
+}
 .content-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items:stretch
+}
 
+/*-----------------------info-head-container-----------------------*/
+.time-container,.serving-container,.head-info-container,.time-info-container{
+    width:fit-content;
+    padding:0;
+    margin:0;
+}
+
+.head-info-container{
+    
+    margin-left:10px;
+}
+
+.serving-container{
+    width: fit-content;
+    display: flex;
+    align-items: baseline;
+}
+.fa-user-plus{
+    margin-left:10px;
+    font-size: 25px;
+}
+/*----------------------Time Bar---------------------------------*/
+
+.time-info-container{
+    display: flex;
+}
+
+.total-bar{
+    width: 100%;
+    height:20px;
+    background-color: forestgreen;
+}
+.prep-bar{
+    background-color: tomato;
+    width:200px;
+    height:20px;
+    z-index: 1;
 }
 
 .header-title{
