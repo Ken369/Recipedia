@@ -18,10 +18,6 @@ function displayResults(ajaxResponse) {
     var img = $('<img>');
     img.attr('src', ajaxResponse.baseUri+recipeArray[i].image);
     img.addClass("Image-size");
-    $(".Image-size").css("width", "200px");
-    $(".Image-size").css("height", "200px");
-    
-    
     $("#search-results").append(list);
 
     list.append(listRecipesTitle);
