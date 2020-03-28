@@ -121,7 +121,7 @@ $("#search-results").on("click", ".list-recipes", function(event) {
     for (var i = 0; i < ingListArray.length; i++) {
       var ingredients = $("<ul>");
       ingredients.addClass("listof-ing");
-      var ingredientName = $('<li>');
+      var ingredientName = $("<li>");
       ingredientName.text(ingListArray[i].name);
       var ingredientOriginal = $("<ol>");
       ingredientOriginal.text(ingListArray[i].original);
