@@ -41,7 +41,7 @@ $("#search-results").on("click", ".list-recipes", function(event) {
       console.log(response);
       const recipe = {
         title: response.title,
-        titleAttr: response.id,
+        id: response.id,
         img: response.image,
         servings: response.servings,
         prepTime: response.preparationMinutes,
@@ -81,6 +81,7 @@ function createModal (recipe) {
         // fill out
         recipeIMG.attr('src',recipe.img);
         title.text(recipe.title);
+        title.attr("id",recipe.id);
 
     //create the servings content
     servingContainer = $('<div>').addClass("serving-container");
@@ -118,8 +119,8 @@ function createModal (recipe) {
 //----------------- content BODY ------------------------------------
     //define the content body and it's components
     contentBody = $('<section>').addClass("content-body");
-    ingredientContainer = $('<div>').addClass("list-group");
-    methodContainer = $('<div>').addClass("list-group");
+    ingredientContainer = $('<div>').addClass("list-group ingredient-container");
+    methodContainer = $('<div>').addClass("list-group method-container");
     ingredientTitle = $('<h4>').addClass('list-title');
     ingredientTitle.text("Ingredients")
     methodTitle = $('<h4>').addClass("list-title");

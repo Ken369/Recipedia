@@ -21,46 +21,82 @@
     border: 2px solid teal;
     background-color: wheat;
     margin:auto;
+    border-radius: 5px;
 
 }
+/*----------------------- button container -----------------------*/
+
+.button-container{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.favourite-button,.cart-button {
+    border:2px solid;
+    padding:10px;
+    flex-grow: 1;
+    margin:5px;
+    border-radius: 5px;
+}
+
 
 .recipe-image{
     width:300px;
     height:auto;
+    border-radius: 10px;
+    border:5px solid sandybrown
 }
 .content-head{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-content: space-between;
     align-items:stretch
 }
 
-/*-----------------------info-head-container-----------------------*/
+
 .time-container,.serving-container,.head-info-container,.time-info-container{
     width:fit-content;
     padding:0;
     margin:0;
 }
-
+/*-----------------------info-head-container-----------------------*/
 .head-info-container{
-    
     margin-left:10px;
 }
+.header-title{
+    font-family: 'Fugaz One', cursive;
+    font-size: 25px;
 
+}
+
+/*----------------------serving container---------------------------------*/
 .serving-container{
     width: fit-content;
     display: flex;
     align-items: baseline;
+    margin-bottom:10px;
 }
 .fa-user-plus{
     margin-left:10px;
-    font-size: 25px;
+    font-size: 18px;
 }
 /*----------------------Time Bar---------------------------------*/
 
 .time-info-container{
     display: flex;
+    margin-bottom:5px;
+}
+
+.prep-time,.total-time {
+    font-size: 15px;
+    margin:0;
+}
+
+.fa-stopwatch{
+    font-size: 20px;
+    margin:0 20px;
+
 }
 
 .total-bar{
@@ -74,14 +110,37 @@
     height:20px;
     z-index: 1;
 }
+/*----------------------- CONTENT BODY ----------------------------------*/
 
-.header-title{
+.content-body{
+    display: flex;
+    justify-content: space-between;
+}
+.list-body{
+ padding: 0;
+}
+.list-group{
+    margin: 15px 10px 0 10px;
+}
+.method-container{
+    width:60%;
+    padding-left:15px;
+    height: 100%;
+    flex-shrink: 1;
 
 }
-
-.header-content{
-
+.ingredient-container{
+    padding-right:0;
+    height: 100%;
+    flex-shrink: 12;
+    border-right:2px solid sandybrown
 }
+.list-title{
+    text-align: left;
+    margin-left:0;
+    padding-left:0;
+}
+
 
 /* --------------------------------------------------------------------------- */
 /* ----------------------- End Modal ----------------------------------------- */
