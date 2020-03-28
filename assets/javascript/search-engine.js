@@ -56,15 +56,16 @@ function constructEndpointQuery(){
     return endpoint;
 }
 
-function ajaxRequest(URL){
+function ajaxRequest(URL,callback){
     $.ajax({
         url: URL,
         method: "GET"
-      }).then(displayResults);//Display results file in another file
-    }
-    function search(){
-    url = constructEndpointQuery();
-    ajaxRequest(url);
+      }).then(callback);//Display results file in another file
+}
+
+function search(){
+url = constructEndpointQuery();
+ajaxRequest(url,displayResults);
 }
 
   
@@ -100,15 +101,12 @@ $("#search-results").on("click", ".list-recipes", function(event){
     const userKey = randomKey(); //api key     
     const APIkey = "&apiKey="+userKey; 
     const IngURL = "https://api.spoonacular.com/recipes/" + recipeId + "/information?includeNutrition=false"+APIkey;
-  $.ajax({
-      url: IngURL,
-      method: "GET"
-  }).then(function (response){
+    ajaxRequest(IngURL,getIngredients);
+});
 
+function getIngredients(response) {
     console.log(response);
     var ingredients = $('<ul>');
     ingredients.text(response);
    $("#ingredients-card").append(ingredients);
-  });
-})
-
+}
