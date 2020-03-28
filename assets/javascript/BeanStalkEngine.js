@@ -70,19 +70,14 @@ class Sprout {
         this.emmetString = emmetString;
         this.selectors = extractSelectors(emmetString);
         this.seeds = null;
-    }
-    get selector(){
-        return this.selectors;
-    }
-    get seed(){
-        return this.seeds;
-    }
-    set selector (selectorObject) {
-        this.selectors = selectorObject;
-    }
-    set seed (seedObject){
-        this.seeds = seedObject;
-    }
+    };
+    get info (){
+        return this
+   };
+    set info (object) {
+        this.info
+    };
+
     addContent(content){
         if (typeof(content) === "object"){
             if (Array.isArray(content)){
@@ -93,7 +88,7 @@ class Sprout {
         } else if (typeof(content) ==="string") {
             extractFromString(content,this);
         }
-    }
+    };
     addClasses(classes){
         if (typeof(classes) === "object"){
             if (Array.isArray(classes)){
@@ -113,7 +108,7 @@ class Sprout {
             $(appendTo).append(element);
         });
         germinateSeeds(this);
-    }
+    };
     
 }
 
@@ -198,12 +193,13 @@ function classesFromObject(classes,sprout){
 }
 
 function classesFromString(){
-    throw "currently not supported"
+    throw "setting from string currently not supported"
 };
 
 function extractFromObject(content,sprout){
     for (const key in content){
         if (key === "title" ){
+            console.log("title working");
             const titleSelectors = ["h1","h2","h3","h4","h5","h6"]
             for (const seed in sprout.seeds){
                 if (seed === "titleSeed"){
@@ -211,27 +207,32 @@ function extractFromObject(content,sprout){
                 }
             }
             for (const selector in sprout.selectors){
+                console.log("title");
                 titleSelectors.forEach(hTag => {
                     if (selector === hTag){
+                        console.log(selector);
+                        console.log(hTag);
+                        console.log("object");
                         sprout.selectors[selector]["text"] = content[key];
                     }
                 });
             }
         }
         if (key === "content" ){
+            console.log("content tells me it's working");
             const contentSelectors = ["p"]
             for (const seed in sprout.seeds){
                 if (seed === "contentSeed"){
                     sprout.seeds[seed]["text"] = content[key];
-                } else {
-                    for (const selector in sprout.selectors){
-                        contentSelectors.forEach(pTag => {
-                            if (selector === pTag){
-                                sprout.selectors[selector]["text"] = content[key];
-                            }
-                        });
+                } 
+            }
+            for (const selector in sprout.selectors){
+                console.log("are we entering this function?");
+                contentSelectors.forEach(pTag => {
+                    if (selector === pTag){
+                        sprout.selectors[selector].text = content[key];
                     }
-                }
+                });
             }
         }
         if (key === "link" ){
@@ -240,34 +241,38 @@ function extractFromObject(content,sprout){
                 if (seed === "linkSeed"){
                     sprout.seeds[seed]["text"] = content[key].content
                     sprout.seeds[seed]["attributes"]["href"]=content[key].href
-                } else {
-                    for (const selector in sprout.selectors){
-                        matchedSelectors.forEach(matchedSelector => {
-                            if (selector === matchedSelector){
-                                sprout.selectors[selector]["text"] = content[key].text
-                                sprout.selectors[selector]["attributes"]["href"]=content[key].href
-                            }
-                        });
-                    }
                 }
+            }
+            for (const selector in sprout.selectors){
+                console.log("link");
+                matchedSelectors.forEach(matchedSelector => {
+                    if (selector === matchedSelector){
+                        sprout.selectors[selector]["text"] = content[key].text
+                        sprout.selectors[selector]["attributes"]["href"]=content[key].href
+                    }
+                });
             }
         }
         if (key === "image" ){
             const matchedSelectors = ["img"]
             for (const seed in sprout.seeds){
                 if (seed === "imgSeed"){
-                    sprout.seeds[seed]["attributes"]["alt"] = content[key].alt
-                    sprout.seeds[seed]["attributes"]["src"]=content[key].src
-                } else {
-                    for (const selector in sprout.selectors){
-                        matchedSelectors.forEach(matchedSelector => {
-                            if (selector === matchedSelector){
-                                sprout.selectors[selector]["attributes"]["alt"] = content[key].alt
-                                sprout.selectors[selector]["attributes"]["src"]=content[key].src
-                            }
-                        });
-                    }
+                    sprout.seeds[seed].attributes.alt = content[key].alt
+                    sprout.seeds[seed].attributes.alt = content[key].src
                 }
+            }
+            for (const selector in sprout.selectors){
+                console.log("image");
+                matchedSelectors.forEach(matchedSelector => {
+                    if (selector === matchedSelector){
+                        console.log("working?");
+                        console.log(content[key].alt);
+                        console.log(sprout.selectors[selector]);
+                        console.log(sprout.selectors[selector].attributes);
+                        sprout.selectors[selector]["attributes"]["alt"] = content[key].alt
+                        sprout.selectors[selector]["attributes"]["src"] = content[key].src
+                    }
+                });
             }
         }
         if (key === "list" ){
