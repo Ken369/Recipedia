@@ -119,6 +119,7 @@ $("#search-results").on("click", ".list-recipes", function(event) {
   }).then(function(response) {
     console.log(response);
     let ingListArray = response.extendedIngredients;
+    
     for (var i = 0; i < ingListArray.length; i++) {
       var ingredients = $("<ul>");
       ingredients.addClass("listof-ing");
