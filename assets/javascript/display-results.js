@@ -1,21 +1,26 @@
 
 function displayResults(ajaxResponse) {
   var recipeArray = ajaxResponse.results;
-  console.log(ajaxResponse.results);
+  console.log(ajaxResponse);
   for (var i = 0; i < recipeArray.length; i++) {
-    
+    //var recipeId = recipeArray[i].id; 
     var list = $('<ul>');
     var listRecipesTitle = $('<a href="#">');
-
     listRecipesTitle.text(recipeArray[i].title );
+   // var id = "recipeArray[i].id";
     listRecipesTitle.addClass("list-recipes");
+    listRecipesTitle.attr("data-id", recipeArray[i].id)
     var listRecipesProcessing = $('<p>');
     listRecipesProcessing.text("Processing Time: " + recipeArray[i].readyInMinutes);
     var listRecipesServing = $('<p>');
     listRecipesServing.text("Total Servings: " + recipeArray[i].servings);
 
     var img = $('<img>');
-    img.attr('src', ajaxResponse.baseUri+ajaxResponse.results[i].image)
+    img.attr('src', ajaxResponse.baseUri+recipeArray[i].image);
+    img.addClass("Image-size");
+    $(".Image-size").css("width", "200px");
+    $(".Image-size").css("height", "200px");
+    
     
     $("#search-results").append(list);
 
@@ -26,16 +31,10 @@ function displayResults(ajaxResponse) {
 
 
   }
-  
-  $("#search-results").on("click", ".list-recipes", function(){
-    var div =  $("<div class='recipe-info'>");
-    var processingTime = recipeArray[0].readyInMinutes;
-    var pOne = $("<p>").text("Processing Time: " + processingTime);
-    div.append(pOne);
-     var servings = recipeArray[0].servings;
-     var pTwo = $("<p>").text("servings: " + servings);
-     div.append(pTwo);
-})
+
 }
+  
+
+  
 
 

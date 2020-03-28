@@ -37,7 +37,7 @@ function constructEndpointQuery(){
     searchParameters = getParameters();
     const number = "&number=12"
     const instructionsRequired = "&instructionsRequired=true"
-    const base = "https://api.spoonacular.com/recipes/search?"; //base endpoint
+    const base = "https://api.spoonacular.com/recipes/search?"; //base endpoint 
     const query = "query="+searchParameters.query;
     const cuisines = "&cuisine="+searchParameters.cuisines;
     const diet = "&diet="+searchParameters.diets;
@@ -61,14 +61,13 @@ function ajaxRequest(URL){
         url: URL,
         method: "GET"
       }).then(displayResults);//Display results file in another file
-  }
-
-
-function search(){
+    }
+    function search(){
     url = constructEndpointQuery();
     ajaxRequest(url);
 }
-//-----------------------------------------------------------------------------------------------
+
+  
 //----------------------------------LISTENERS----------------------------------------------------
 //-----------------------------------------------------------------------------------------------
 $('.fa-search').click(function(){
@@ -91,5 +90,25 @@ $('#advanced-search').on('keypress', function(event){
     if (element.is('input') && event.which === 13){
         search();
     }
+})
+
+//Clicking recipe in a list
+$("#search-results").on("click", ".list-recipes", function(event){
+    console.log(event.currentTarget.getAttribute("data-id"));
+    const recipeId = event.currentTarget.getAttribute("data-id");
+    //const recipes = event.currentTarget.innerText;
+    const userKey = randomKey(); //api key     
+    const APIkey = "&apiKey="+userKey; 
+    const IngURL = "https://api.spoonacular.com/recipes/" + recipeId + "/ingredientWidget";
+  $.ajax({
+      url: IngURL,
+      method: "GET"
+  }).then(function (response){
+
+    console.log(response);
+    var ingredients = $('<ul>');
+    ingredients.text(response);
+   $("#ingredients-card").append(ingredients);
+  });
 })
 
