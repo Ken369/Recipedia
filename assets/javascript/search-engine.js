@@ -65,15 +65,16 @@ function constructEndpointQuery() {
   return endpoint;
 }
 
-function ajaxRequest(URL) {
-  $.ajax({
-    url: URL,
-    method: "GET"
-  }).then(displayResults); //Display results file in another file
+function ajaxRequest(URL,callback){
+    $.ajax({
+        url: URL,
+        method: "GET"
+      }).then(callback);//Display results file in another file
 }
-function search() {
-  url = constructEndpointQuery();
-  ajaxRequest(url);
+
+function search(){
+url = constructEndpointQuery();
+ajaxRequest(url,displayResults);
 }
 
 //----------------------------------LISTENERS----------------------------------------------------
@@ -147,3 +148,4 @@ $("#search-results").on("click", ".list-recipes", function(event) {
     $("#recipeInstructions").append(instructions);
   });
 });
+
