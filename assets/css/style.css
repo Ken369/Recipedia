@@ -52,7 +52,7 @@ img.responsive-img.tiles{
     margin-top: 33px;
 }
 
-button,#advanced-search-button.waves-effect.waves-light.btn{
+button,#advanced-search-button,.waves-effect,.waves-light,.btn{
     margin-top: 10px;
     object-position: center;
     background-color: #C1382A;

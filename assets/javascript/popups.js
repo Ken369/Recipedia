@@ -1,3 +1,21 @@
+//------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------- POPUP BUTTONS --------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------
+
+$(document).on('click',function(event){
+    clickedItem = $(event.target);
+    if (clickedItem.is('#close-icon, #close-window')||clickedItem.parent().is('#close-icon, #close-window')){
+        $('.modal-container').remove();
+    }
+});
+
+//------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------- SEARCH RESULT CARDS -----------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 ` 
 <div class="card light-grey darken-1">
     <div class="card light-grey darken-1">
@@ -19,8 +37,9 @@
     </div>               
 </div>
 `
-
-
+//------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------- MODAL CREATION UPON CLICKING A CARD ---------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------
 
 //Clicking recipe in a list
 $("#search-results").on("click", ".list-recipes", function(event) {
@@ -43,7 +62,7 @@ $("#search-results").on("click", ".list-recipes", function(event) {
         title: response.title,
         id: response.id,
         dietTags:{
-            vegetarian:{status:response.vegetarian,displayText:displayText:"Vegetarian"},
+            vegetarian:{status:response.vegetarian,displayText:"Vegetarian"},
             glutenFree:{status:response.glutenFree,displayText:"Gluten free"},
             vegan:{status:response.vegan,displayText:"Vegan"},
             dairyFree:{status:response.dairyFree,displayText:"Dairy free"},
@@ -56,9 +75,11 @@ $("#search-results").on("click", ".list-recipes", function(event) {
         ingredientList: response.extendedIngredients,
         methodList: response.analyzedInstructions[0].steps
       }
-
+      //creates the modal
     const recipeModal = createModal(recipe);
-    $('body').append(recipeModal);
+    
+    //append modal to #modal-goes-here 
+    $('#modal-goes-here').append(recipeModal);
   }
   
 
@@ -67,18 +88,28 @@ function createModal (recipe) {
     //define the modal box and buttons
     modalContainer = $('<div>').addClass("modal-container");
     modalBody = $('<div>').addClass("modal-body");
+
+    //creates modal-favourite, add-to-cart and close-window buttons
     buttonContainer = $('<div>').addClass("button-container");
-    favouriteButton = $('<button>').addClass("favourite-button");
+    favouriteButton =  $('<button>').addClass("favourite-button");
+    favouriteText = $('<span>').addClass("favourite-text");
     heartIcon = $('<i>').addClass("fa fa-heart");
-    shoppingCart = $('<button>').addClass("cart-button");
+    cartButton =  $('<button>').addClass("cart-button");
+    cartText = $('<span>').addClass("cart-text");
     cartIcon = $('<i>').addClass("fa fa-cart-plus");
     closeButton = $('<button>').addClass("close-button");
+    closeButton.attr("id","close-window")
     closeIcon = $('<i>').addClass("fas fa-times");
+    closeIcon.attr("id","close-icon")
+    
         // assemble button container
-        favouriteButton.append(heartIcon);
-        shoppingCart.append(cartIcon);
+        favouriteText.text("save to favourites");
+        cartText.text("Ingredients -> ");
+        favouriteButton.append(favouriteText, heartIcon);
+        cartButton.append(cartText, cartIcon);
         closeButton.append(closeIcon);
-        buttonContainer.append(favouriteButton,shoppingCart,closeButton);
+        buttonContainer.append(favouriteButton, cartButton);
+        modalBody.append(closeButton)
 //-----------------------Content HEADER--------------------------
     // define the content head and it's components
     contentHead = $('<section>').addClass("content-head");
@@ -107,7 +138,9 @@ function createModal (recipe) {
     totalTime = $('<h5>').addClass("total-time");
     stopwatchIcon = $('<i>').addClass("fas fa-stopwatch");
         //define the content of these components
-        prepTime.text("Prep: "+recipe.prepTime+" mins");
+        if (recipe.prepTime !== undefined ){
+            prepTime.text("Prep: "+recipe.prepTime+" mins");
+        }
         totalTime.text("Total: "+recipe.totalTime+" mins");
         timeInfoContainer.append(prepTime,stopwatchIcon,totalTime);
         timeContainer.append(timeInfoContainer);
@@ -123,9 +156,11 @@ function createModal (recipe) {
     dietTagContainter = $('<div>').addClass("diet-tag-container");
     // loop through all tags, if any of them are true, create a tag with the key name
     for (const tag in recipe.dietTags){
-        if (recipe.dietTags.tag.status){
+        console.log(tag);
+        console.log(recipe.dietTags[tag].status);
+        if (recipe.dietTags[tag].status){
             tagItem = $('<span>').addClass("diet-tag");
-            tagItem.text(tag.displayText);
+            tagItem.text(recipe.dietTags[tag].displayText);
             dietTagContainter.append(tagItem);
         }
     }
@@ -158,11 +193,10 @@ function createModal (recipe) {
             const listItem = $('<li>');
             const name = ingredient.name;
             const consistency = ingredient.consistency;
-            const nameExtended = name+": "+ingredient.original;
             if (ingredient.measures.metric.unitShort === ingredient.measures.us.unitShort){
-                listItem.text(nameExtended);
+                listItem.text(ingredient.original);
             } else if (consistency === "solid" && ingredient.measures.metric.unitShort ==="ml"){
-                listItem.text(nameExtended);
+                listItem.text(ingredient.original);
             } else {
                 let amount = ingredient.measures.metric.amount;
                 const units = ingredient.measures.metric.unitShort;
@@ -190,9 +224,8 @@ function createModal (recipe) {
 modalBody.append(buttonContainer, contentHead, contentBody);
 
 //finally append all to the modalContainer
-modalContainer.append(modalBody);
+modalContainer.prepend(modalBody)
 
 return modalContainer;
 }
-
 

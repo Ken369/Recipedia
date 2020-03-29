@@ -1,6 +1,15 @@
 // --------------on start up------------------------
 $("#advanced-search").hide();
 
+$(".modal-container").on("click", function(){
+  console.log("outside Modal click!!!");
+ });
+ 
+ $(".modal-body").on("click", function(){
+     console.log("inside Modal click!!!");
+    });
+
+
 //---------------functions-----------------
 function randomKey() {
   const KenKey = "c969a48f9cee4515b05f7efc8cf78b6b";
@@ -90,14 +99,5 @@ $("#search-query").on("keypress", function(event) {
   }
 });
 
-$("#advanced-search-button").click(function() {
-  $("#advanced-search").toggle("slow");
-});
 
-$("#advanced-search").on("keypress", function(event) {
-  element = $(event.target);
-  if (element.is("input") && event.which === 13) {
-    search();
-  }
-});
 
