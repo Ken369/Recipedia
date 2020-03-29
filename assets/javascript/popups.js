@@ -59,27 +59,7 @@ function createModal (recipe) {
     modalContainer = $('<div>').addClass("modal-container");
     modalBody = $('<div>').addClass("modal-body");
 
-    //creates modal-favourite, add-to-cart and close-window buttons
-    buttonContainer = $('<div>').addClass("button-container");
-    favouriteButton =  $('<button>').addClass("favourite-button");
-    favouriteText = $('<span>').addClass("favourite-text");
-    heartIcon = $('<i>').addClass("fa fa-heart");
-    cartButton =  $('<button>').addClass("cart-button");
-    cartText = $('<span>').addClass("cart-text");
-    cartIcon = $('<i>').addClass("fa fa-cart-plus");
-    closeButton = $('<button>').addClass("close-button");
-    closeButton.attr("id","close-window")
-    closeIcon = $('<i>').addClass("fas fa-times");
-    closeIcon.attr("id","close-icon")
     
-        // assemble button container
-        favouriteText.text("save to favourites");
-        cartText.text("Ingredients -> ");
-        favouriteButton.append(favouriteText, heartIcon);
-        cartButton.append(cartText, cartIcon);
-        closeButton.append(closeIcon);
-        buttonContainer.append(favouriteButton, cartButton);
-        modalBody.append(closeButton)
 //-----------------------Content HEADER--------------------------
     // define the content head and it's components
     contentHead = $('<section>').addClass("content-head");
@@ -141,6 +121,27 @@ function createModal (recipe) {
     contentHead.append(subHeadContainer,dietTagContainter);
 
 //----------------- content BODY ------------------------------------
+//creates modal-favourite, add-to-cart and close-window buttons
+buttonContainer = $('<div>').addClass("button-container");
+favouriteButton =  $('<button>').addClass("favourite-button");
+favouriteText = $('<span>').addClass("favourite-text");
+heartIcon = $('<i>').addClass("fa fa-heart");
+cartButton =  $('<button>').addClass("cart-button");
+cartText = $('<span>').addClass("cart-text");
+cartIcon = $('<i>').addClass("fa fa-cart-plus");
+closeButton = $('<button>').addClass("close-button");
+closeButton.attr("id","close-window")
+closeIcon = $('<i>').addClass("fas fa-times");
+closeIcon.attr("id","close-icon")
+
+    // assemble button container
+    favouriteText.text("save to favourites");
+    cartText.text("Ingredients -> ");
+    favouriteButton.append(favouriteText, heartIcon);
+    cartButton.append(cartText, cartIcon);
+    closeButton.append(closeIcon);
+    buttonContainer.append(favouriteButton, cartButton);
+    modalBody.append(closeButton)
     //define the content body and it's components
     contentBody = $('<section>').addClass("content-body");
     ingredientContainer = $('<div>').addClass("list-group ingredient-container");
