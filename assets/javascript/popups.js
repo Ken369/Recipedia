@@ -68,10 +68,13 @@ function createModal (recipe) {
     heartIcon = $('<i>').addClass("fa fa-heart");
     shoppingCart = $('<button>').addClass("cart-button");
     cartIcon = $('<i>').addClass("fa fa-cart-plus");
+    closeButton = $('<button>').addClass("close-button");
+    closeIcon = $('<i>').addClass("fas fa-times");
         // assemble button container
         favouriteButton.append(heartIcon);
         shoppingCart.append(cartIcon);
-        buttonContainer.append(favouriteButton,shoppingCart);
+        closeButton.append(closeIcon);
+        buttonContainer.append(favouriteButton,shoppingCart,closeButton);
 //-----------------------Content HEADER--------------------------
     // define the content head and it's components
     contentHead = $('<section>').addClass("content-head");
