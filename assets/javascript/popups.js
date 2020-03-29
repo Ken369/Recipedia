@@ -108,8 +108,7 @@ function createModal (recipe) {
     dietTagContainter = $('<div>').addClass("diet-tag-container");
     // loop through all tags, if any of them are true, create a tag with the key name
     for (const tag in recipe.dietTags){
-        console.log(tag);
-        console.log(recipe.dietTags[tag].status);
+
         if (recipe.dietTags[tag].status){
             tagItem = $('<span>').addClass("diet-tag");
             tagItem.text(recipe.dietTags[tag].displayText);
@@ -125,8 +124,10 @@ function createModal (recipe) {
 //----------------- content BODY ------------------------------------
 //creates modal-favourite, add-to-cart and close-window buttons
 buttonContainer = $('<div>').addClass("button-container");
-favouriteButton =  $('<button>').addClass("favourite-button");
+favouriteButton =  $('<button>');
+
 favouriteText = $('<span>').addClass("favourite-text");
+favouriteText.attr("id","favourite-button-text")
 heartIcon = $('<i>').addClass("fa fa-heart");
 cartButton =  $('<button>').addClass("cart-button");
 cartText = $('<span>').addClass("cart-text");
@@ -135,9 +136,15 @@ closeButton = $('<button>').addClass("close-button");
 closeButton.attr("id","close-window")
 closeIcon = $('<i>').addClass("fas fa-times");
 closeIcon.attr("id","close-icon")
-
+    console.log(inFavourites(recipe.id));
     // assemble button container
-    favouriteText.text("save to favourites");
+    if (inFavourites(recipe.id)){
+        favouriteButton.addClass("remove-favourite-button");
+        favouriteText.text("remove from favourites");
+    } else {
+        favouriteButton.addClass("add-favourite-button");
+        favouriteText.text("save to favourites");
+    }
     cartText.text("Ingredients -> ");
     favouriteButton.append(favouriteText, heartIcon);
     cartButton.append(cartText, cartIcon);
@@ -167,14 +174,14 @@ closeIcon.attr("id","close-icon")
             const name = ingredient.name;
             const consistency = ingredient.consistency;
             if (ingredient.measures.metric.unitShort === ingredient.measures.us.unitShort){
-                listItem.text(ingredient.original);
+                listItem.text("- "+ingredient.original);
             } else if (consistency === "solid" && ingredient.measures.metric.unitShort ==="ml"){
                 listItem.text(ingredient.original);
             } else {
                 let amount = ingredient.measures.metric.amount;
                 const units = ingredient.measures.metric.unitShort;
                 amount = Math.round(amount);
-                const metricName = name+": "+amount+units;
+                const metricName = "- "+name+": "+amount+units;
                 listItem.text(metricName);
             }
             ingredientList.append(listItem);

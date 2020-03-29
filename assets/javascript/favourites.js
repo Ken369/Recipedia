@@ -11,22 +11,30 @@ const favouritedRecipes = retreiveFavourites();
 //--------------------------------------------------------------------
 
 function addToFavourites(){
-    recipeToAdd = JSON.parse(localStorage.getItem("temp"));
-    let add = true;
-    recipeId = recipeToAdd.id
-    Object.keys(favouritedRecipes).forEach(ID => {
-        if(ID === recipeId){
-            addToFavourites = false;
-        }
-    });
-    if (add){
+    console.log("ADD TO FAVOURITES");
+    const recipeToAdd = JSON.parse(localStorage.getItem("temp"));
+    const recipeId = recipeToAdd.id
+
+    if (!inFavourites(recipeId)){
+
         favouritedRecipes[recipeId] = recipeToAdd;
-        console.log(favouritedRecipes);
         localStorage.setItem("favourites",JSON.stringify(favouritedRecipes));
     }
 }
 
+function inFavourites(recipeId){
+  let infavourites = false
+    Object.keys(favouritedRecipes).forEach(ID => {
+        if (ID == recipeId){
+            infavourites = true
+        }
+    });
+
+    return infavourites;
+}
+
 function removeFromFavourites(){
+    console.log("REMOVE FROM FAVOURITES");
     recipeToRemove = JSON.parse(localStorage.getItem("temp"));
     recipeId = recipeToRemove.id
     delete favouritedRecipes[recipeId]

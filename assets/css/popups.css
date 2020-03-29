@@ -37,20 +37,33 @@
     display: flex;
     justify-content: space-evenly;
 }
-.favourite-button {
-    border:0px solid;
+.add-favourite-button {
+    border:none;
     padding:10px;
     margin:5px;
     border-radius: 5px;
     background-color: orange;
     color: #C1382A;
-    border-color: black;
+
 }
-:hover.favourite-button {
+:hover.add-favourite-button, :focus.add-favourite-button {
     background-color: #db8f02;
     color: #C1382A;
-    border-color: black;
+
 }
+.remove-favourite-button{
+    border:none;
+    padding:10px;
+    margin:5px;
+    border-radius: 5px;
+    background-color: #C1382A;
+    color: orange;
+}
+:hover.remove-favourite-button, :focus.remove-favourite-button{
+    background-color: #a13226;
+    color: orange;
+}
+
 .cart-button {
     border:0px solid;
     padding:10px;
@@ -193,7 +206,7 @@
 
 }
 .ingredient-container{
-    padding-right:0;
+    padding-right:10px;
     height: 100%;
     flex-shrink: 12;
     border-right:2px solid sandybrown
