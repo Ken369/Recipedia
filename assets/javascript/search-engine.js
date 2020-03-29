@@ -95,7 +95,11 @@ $(document).on('click',function(event){
       $('.modal-container').remove();
   }
   if (clickedItem.is('.fa-search')||clickedItem.parent().is('.fa-search')){
+    $('.fa-search').toggleClass("spinner");
+    setTimeout(() => {  $('.fa-search').toggleClass("spinner"); }, 500);
     search();
+    setTimeout(() => {  $('.fa-search').toggleClass("spinner"); }, 500);
+   
   }
   if (clickedItem.is('.result-card')||clickedItem.parent().is('.result-card')){
     console.log("giving clicked item to displayFullRecipe");
