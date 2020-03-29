@@ -227,16 +227,21 @@
     height:auto;
     background-color: wheat;
     border: 2px solid teal;
+    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.2s;
+}
+.result-card:hover{
+    cursor: pointer;
+    transform: scale(1.025);
+
 }
 
 .banner {
-    margin-block-start: 200px;
+    margin-block-start: 50%;
     font-family: 'Fugaz One', cursive;
     font-size: 25px;
     display:inherit;
     float: right;
     position: absolute;
-    z-index: 1;
     max-width: 250px;
     font-size: 15px;
     padding:20px;
