@@ -98,7 +98,7 @@ $("#advanced-search").on("keypress", function(event) {
 
 
 
-// listners for all dynamic content, excutes fucntions depending on content
+// listners for all dynamic content, excutes functions depending on content
 $(document).on('click',function(event){
 
   clickedItem = $(event.target);
@@ -115,16 +115,37 @@ $(document).on('click',function(event){
   if (clickedItem.is('.result-card')||clickedItem.parent().is('.result-card')){
     expandRecipe(clickedItem);
   }
-  if (clickedItem.is('.favourite-button')||clickedItem.parent().is('.favourite-button')){
-    addToFavourites();
+  if (clickedItem.is('.add-favourite-button')||clickedItem.parents().is('.add-favourite-button')||clickedItem.is('.remove-favourite-button')||clickedItem.parents().is('.remove-favourite-button')){
+    
+    if (clickedItem.is(".add-favourite-button")||clickedItem.parents().is('.add-favourite-button')){
+      const buttonEl = document.getElementsByClassName("add-favourite-button");
+      console.log(buttonEl);
+      buttonEl[0].classList.add("remove-favourite-button");
+      buttonEl[0].classList.remove("add-favourite-button");
+      const favouriteText = document.getElementById("favourite-button-text");
+      console.log(favouriteText);
+      favouriteText.innerHTML = "Remove from favourites"
+      addToFavourites();
+    } else {
+      const buttonEl = document.getElementsByClassName("remove-favourite-button");
+      console.log(buttonEl);
+      buttonEl[0].classList.add("add-favourite-button");
+      buttonEl[0].classList.remove("remove-favourite-button");
+      const favouriteText = document.getElementById("favourite-button-text");
+      console.log(favouriteText);
+      favouriteText.innerHTML = "Add to favourites"
+      removeFromFavourites();
+    }
   }
-  if (clickedItem.is('.favourite-button')||clickedItem.parent().is('.favourite-button')){
-    removeFromFavourites();
-  }
+ 
 
 });
 
 //expands search bar
 $('#advanced-search-button').click(function(){
   $('#advanced-search').toggle("slow");
+});
+
+$(".add-favourite-button").click(function(){
+    console.log("this is a click!!");
 });
