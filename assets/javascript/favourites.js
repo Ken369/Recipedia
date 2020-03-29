@@ -50,6 +50,13 @@ function retreiveFavourites(){
     } 
 }
 
+function ADDtempfile(recipe){
+    localStorage.setItem("temp",JSON.stringify(recipe));
+}
+
+function DELETEtempfile(){
+
+}
 
 
 //--------------------------------------------------------------------
