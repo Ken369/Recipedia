@@ -88,6 +88,16 @@ $("#search-query").on("keypress", function(event) {
     search();
   }
 });
+
+$("#advanced-search").on("keypress", function(event) {
+  if (event.which === 13 && $(event.target).is("input")) {
+    event.preventDefault();
+    search();
+  }
+});
+
+
+
 // listners for all dynamic content, excutes fucntions depending on content
 $(document).on('click',function(event){
   clickedItem = $(event.target);
