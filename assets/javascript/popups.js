@@ -42,6 +42,13 @@ $("#search-results").on("click", ".list-recipes", function(event) {
       const recipe = {
         title: response.title,
         id: response.id,
+        dietTags:{
+            vegetarian:{status:response.vegetarian,displayText:displayText:"Vegetarian"},
+            glutenFree:{status:response.glutenFree,displayText:"Gluten free"},
+            vegan:{status:response.vegan,displayText:"Vegan"},
+            dairyFree:{status:response.dairyFree,displayText:"Dairy free"},
+            lowFodmap:{status:response.lowFodmap,displayText:"Low fodmap"},
+        },
         img: response.image,
         servings: response.servings,
         prepTime: response.preparationMinutes,
@@ -50,9 +57,6 @@ $("#search-results").on("click", ".list-recipes", function(event) {
         methodList: response.analyzedInstructions[0].steps
       }
 
-    for(const property in recipe){
-      console.log(recipe[property]);
-    }
     const recipeModal = createModal(recipe);
     $('body').append(recipeModal);
   }
@@ -112,12 +116,24 @@ function createModal (recipe) {
         prepBar.css("width", prepTimePercent+"%");
         totalBar.append(prepBar);
         timeContainer.append(totalBar);
-
     //append these blocks to the headInfoContainer
     headInfoContainer.append(title, servingContainer,timeContainer)
 
+    //create the diet tags
+    dietTagContainter = $('<div>').addClass("diet-tag-container");
+    // loop through all tags, if any of them are true, create a tag with the key name
+    for (const tag in recipe.dietTags){
+        if (recipe.dietTags.tag.status){
+            tagItem = $('<span>').addClass("diet-tag");
+            tagItem.text(tag.displayText);
+            dietTagContainter.append(tagItem);
+        }
+    }
+    //create a further container for the img and the headInfoContainer
+    subHeadContainer = $('<div>').addClass("sub-head-container");
+    subHeadContainer.append(recipeIMG,headInfoContainer);
     //append the info and the image into the content Head
-    contentHead.append(recipeIMG, headInfoContainer);
+    contentHead.append(subHeadContainer,dietTagContainter);
 
 //----------------- content BODY ------------------------------------
     //define the content body and it's components
