@@ -1,13 +1,6 @@
 // --------------on start up------------------------
 $("#advanced-search").hide();
 
-$(".modal-container").on("click", function(){
-  console.log("outside Modal click!!!");
- });
- 
- $(".modal-body").on("click", function(){
-     console.log("inside Modal click!!!");
-    });
 
 
 //---------------functions-----------------
@@ -88,9 +81,6 @@ ajaxRequest(url,displayResults);
 
 //----------------------------------LISTENERS----------------------------------------------------
 //-----------------------------------------------------------------------------------------------
-$(".fa-search").click(function() {
-  search();
-});
 
 $("#search-query").on("keypress", function(event) {
   if (event.which === 13) {
@@ -99,5 +89,16 @@ $("#search-query").on("keypress", function(event) {
   }
 });
 
+$(document).on('click',function(event){
+  clickedItem = $(event.target);
+  if (clickedItem.is('#close-icon, #close-window')||clickedItem.parent().is('#close-icon, #close-window')){
+      $('.modal-container').remove();
+  }
+  if (clickedItem.is('.fa-search')||clickedItem.parent().is('.fa-search')){
+    search();
+  }
+});
 
-
+$('#advanced-search-button').click(function(){
+  $('#advanced-search').toggle("slow");
+});
