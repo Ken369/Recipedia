@@ -4,9 +4,17 @@
 //------------------------------------------------------------------------------------------------------------------------------
 
 //Clicking recipe in a list
-$("#search-results").on("click", ".list-recipes", function(event) {
-    console.log($(event.target).attr("data-id"));
-    const recipeId = $(event.target).attr("data-id");
+function expandRecipe(clickedItem){
+    console.log(clickedItem);
+    let recipeId = null;
+    if (clickedItem.is('.result-card')){
+        console.log(clickedItem.attr("id"));
+        recipeId = clickedItem.attr("data-id");
+    } else if (clickedItem.parent().is('.result-card')){
+        console.log(clickedItem.parent('.result-card').attr("id"));
+        recipeId = clickedItem.parent('.result-card').attr("id");
+    }
+   
     //const recipes = event.currentTarget.innerText;
     const userKey = randomKey(); //api key
     const APIkey = "&apiKey=" + userKey;
@@ -15,10 +23,10 @@ $("#search-results").on("click", ".list-recipes", function(event) {
       recipeId +
       "/information?includeNutrition=false" +
       APIkey;
-      ajaxRequest(IngURL,getFullRecipe);
-});
+      ajaxRequest(IngURL,displayFullRecipe);
+}
     
-    function getFullRecipe(response){
+    function displayFullRecipe(response){
       console.log(response);
       const recipe = {
         title: response.title,

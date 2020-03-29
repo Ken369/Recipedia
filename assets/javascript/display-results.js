@@ -25,9 +25,9 @@ function resultCard (info) {
       img.attr("src",info.image);
       totalTime.text("Ready in: "+info.totalTime+"mins");
       banner.text(info.title);
-      banner.attr("id",info.id);
       //append all to card
   card.append(banner,img,totalTime);
+  card.attr("id",info.id);
   
   return card;
   
