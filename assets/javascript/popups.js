@@ -45,6 +45,8 @@ function expandRecipe(clickedItem){
         ingredientList: response.extendedIngredients,
         methodList: response.analyzedInstructions[0].steps
       }
+
+      ADDtempfile(recipe); // saves a temp copy in local under the key "temp"
       //creates the modal
     const recipeModal = createModal(recipe);
     

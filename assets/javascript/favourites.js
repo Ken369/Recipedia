@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
 //--------------------------------------------------------------------
 //----------------------- global variables ---------------------------
 //--------------------------------------------------------------------
@@ -10,35 +10,27 @@ const favouritedRecipes = retreiveFavourites();
 //--------------------------- functions ------------------------------
 //--------------------------------------------------------------------
 
-function addToFavourites(recipeId,recipeTitle,recipeImageSRC){
+function addToFavourites(){
+    recipeToAdd = JSON.parse(localStorage.getItem("temp"));
     let add = true;
+    recipeId = recipeToAdd.id
     Object.keys(favouritedRecipes).forEach(ID => {
         if(ID === recipeId){
             addToFavourites = false;
         }
     });
     if (add){
-        favouritedRecipes[recipeId] = {title:recipeTitle,imageSRC:recipeImageSRC}
+        favouritedRecipes[recipeId] = recipeToAdd;
+        console.log(favouritedRecipes);
         localStorage.setItem("favourites",JSON.stringify(favouritedRecipes));
     }
-   
 }
 
-function removeFromFavourites(recipeId){
+function removeFromFavourites(){
+    recipeToRemove = JSON.parse(localStorage.getItem("temp"));
+    recipeId = recipeToRemove.id
     delete favouritedRecipes[recipeId]
     localStorage.setItem("favourites",JSON.stringify(favouritedRecipes));
-}
-
-
-function prepareToAdd(event){
-    buttonElement = $(event.target);
-    addToFavourites(recipeId,recipeTitle,recipeImageSRC);
-
-}
-
-function prepareToRemove(event){
-   buttonElement = $(event.target);
-    removeFromFavourites(recipeId);
 }
 
 function retreiveFavourites(){
@@ -51,24 +43,20 @@ function retreiveFavourites(){
 }
 
 function ADDtempfile(recipe){
-    localStorage.setItem("temp",JSON.stringify(recipe));
+    localStorage.setItem("temp",JSON.stringify(recipe))
 }
 
-function DELETEtempfile(){
-
-}
 
 
 //--------------------------------------------------------------------
 //--------------------------- listeners ------------------------------
 //--------------------------------------------------------------------
-$('.add-favourite-btn').click(prepareToAdd(event));
+// $('.add-favourite-btn').click(prepareToAdd(event));
 
-$('.remove-favourite-btn').click(prepareToRemove(event));
+// $('.remove-favourite-btn').click(prepareToRemove(event));
 
 
 
 //--------------------------------------------------------------------
 //----------------------- global variables ---------------------------
 //--------------------------------------------------------------------
-});

@@ -100,20 +100,26 @@ $("#advanced-search").on("keypress", function(event) {
 
 // listners for all dynamic content, excutes fucntions depending on content
 $(document).on('click',function(event){
+
   clickedItem = $(event.target);
+
   if (clickedItem.is('#close-icon, #close-window')||clickedItem.parent().is('#close-icon, #close-window')){
       $('.modal-container').remove();
   }
   if (clickedItem.is('.fa-search')||clickedItem.parent().is('.fa-search')){
     $('.fa-search').toggleClass("spinner");
-    setTimeout(() => {  $('.fa-search').toggleClass("spinner"); }, 500);
     search();
     setTimeout(() => {  $('.fa-search').toggleClass("spinner"); }, 500);
    
   }
   if (clickedItem.is('.result-card')||clickedItem.parent().is('.result-card')){
-    console.log("giving clicked item to displayFullRecipe");
     expandRecipe(clickedItem);
+  }
+  if (clickedItem.is('.favourite-button')||clickedItem.parent().is('.favourite-button')){
+    addToFavourites();
+  }
+  if (clickedItem.is('.favourite-button')||clickedItem.parent().is('.favourite-button')){
+    removeFromFavourites();
   }
 
 });
