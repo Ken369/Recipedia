@@ -12,7 +12,8 @@
     position: fixed;
     width: 100%;
     height:100%;
-    padding-top: 15%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .modal-body {
@@ -25,20 +26,46 @@
 
 }
 /*----------------------- button container -----------------------*/
-
+.close-button{
+    padding-top: 10px;
+    padding-right: 10px;
+    color: teal;
+}
 .button-container{
     margin-top: -30px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-evenly;
 }
-.favourite-button,.cart-button {
-    border:2px solid;
+.favourite-button {
+    border:0px solid;
+    padding:10px;
+    margin:5px;
+    border-radius: 5px;
+    background-color: orange;
+    color: #C1382A;
+    border-color: black;
+}
+:hover.favourite-button {
+    background-color: #db8f02;
+    color: #C1382A;
+    border-color: black;
+}
+.cart-button {
+    border:0px solid;
     padding:10px;
     margin:5px;
     border-radius: 5px;
     background-color: #C1382A;
+    color: white;
+    border-color: black;
 }
+
+:hover.cart-button {
+    background-color: rgb(165, 48, 35);
+}
+
+
 .close-button{
     font-size: 15px;
     border: none;
@@ -63,7 +90,7 @@
     width:300px;
     height:auto;
     border-radius: 10px;
-    border:5px solid sandybrown;
+    border:3px solid sandybrown;
 }
 .sub-head-container{/* this controls how the img and the head-info-container(title, serving,time) sits to each other */
     display: flex;
