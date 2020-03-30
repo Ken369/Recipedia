@@ -74,14 +74,15 @@ function displayFavourites(){
 
        const wrapper = $('<div>').addClass("row valign-wrapper");
 
-        const imgWrapper =  $('<img>').addClass("col s2");
-        const favouriteImg = $('<img>').addClass("circle responsive-img");
-            favouriteImg.attr("src",recipes.img);
+        const imgWrapper =  $('<div>').addClass("col s2");
+        const favouriteImg = $('<img>').addClass("favourite-img");
+        console.log(favouritedRecipes[recipes].img);
+            favouriteImg.attr("src",favouritedRecipes[recipes].img);
         imgWrapper.append(favouriteImg);    
 
         const titleWrapper = $('<div>').addClass("col s10"); 
         favouriteTitle = $('<span>').addClass("black-text"); 
-            favouriteTitle.text(recipes.title); 
+            favouriteTitle.text(favouritedRecipes[recipes].title); 
         titleWrapper.append(favouriteTitle);  
 
         wrapper.append(imgWrapper,titleWrapper);

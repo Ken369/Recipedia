@@ -297,6 +297,19 @@
     font-family: 'Patrick Hand', cursive;
 }
 
+#fav-title{
+    padding:10px;
+    font-weight: bold;
+}
+
+#favourites{
+    margin:10px -20px;
+    padding:20px;
+    background-color: rgb(84,110,122);
+    width:fit-content;
+    height:auto;
+}
+
 .shopping-title{
     text-align: center;
     margin-top: -40px;
