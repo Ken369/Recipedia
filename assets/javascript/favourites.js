@@ -69,15 +69,18 @@ function displayFavourites(){
 
         console.log(recipes);
 
-        favouriteCard = $('<div>').addClass("favourite-card");
+        favouriteCard = $('<div>').addClass("favourite-card card light-grey darken-1");
             favouriteCard.attr("id",recipes)
-        Wrapper = $('<div>').addClass("")
+        wrapper = $('<div>').addClass("row valign-wrapper")
+
+        imgWrapper =  $('<img>').addClass("col s2")
+        favouriteImg = $('<img>').addClass("circle responsive-img")
+            favouriteImg.attr("src",recipes.img);
 
         favouriteTitle = $('<h6>').addClass("favourite-title"); 
             favouriteTitle.text(recipes.title)   
 
-        favouriteImg = $('<img>').addClass("favourite-img")
-            favouriteImg.attr("src",recipes.img);
+       
 
         favouriteCard.append(favouriteTitle,favouriteImg);
 
