@@ -26,7 +26,7 @@ function getParameters() {
     exclusions: ""
   };
   searchParameters.query = $("#search-query").val();
-  searchParameters.advancedSearch = "placeholder";
+  searchParameters.advancedSearch = $('#advanced-search-button').attr("value");
   searchParameters.cuisines = $("#cuisine").val();
   searchParameters.diets = $("#diet").val();
   searchParameters.intolerances = $("#intolerences").val();
@@ -48,7 +48,7 @@ function constructEndpointQuery() {
   const userKey = randomKey(); //api key
   const APIkey = "&apiKey=" + userKey; //
   let endpoint;
-  if (searchParameters.advancedSearch) {
+  if (searchParameters.advancedSearch==="true") {
     endpoint =
       base +
       query +
@@ -74,7 +74,10 @@ function ajaxRequest(URL,callback){
       }).then(callback);//Display results file in another file
 }
 
+// ----------------------------- search functions --------------------------------------------
+// Basic Search by query and 
 function search(){
+
 url = constructEndpointQuery();
 ajaxRequest(url,displayResults);
 }
@@ -85,12 +88,14 @@ ajaxRequest(url,displayResults);
 $("#search-query").on("keypress", function(event) {
   if (event.which === 13) {
     event.preventDefault();
+    $('#search-results').empty();
     search();
   }
 });
 
 $("#advanced-search").on("keypress", function(event) {
   if (event.which === 13 && $(event.target).is("input")) {
+    $('#search-results').empty();
     event.preventDefault();
     search();
   }
@@ -103,18 +108,23 @@ $(document).on('click',function(event){
 
   clickedItem = $(event.target);
 
-  if (clickedItem.is('#close-icon, #close-window')||clickedItem.parent().is('#close-icon, #close-window')){
+  if (clickedItem.is('#close-icon, #close-window')||clickedItem.parent().is('#close-icon, #close-window')){ // close modals
       $('.modal-container').remove();
   }
-  if (clickedItem.is('.fa-search')||clickedItem.parent().is('.fa-search')){
+
+  if (clickedItem.is('.fa-search')||clickedItem.parent().is('.fa-search')){ // Search by clicking magnifing glass
+    $('#search-results').empty();
     $('.fa-search').toggleClass("spinner");
     search();
     setTimeout(() => {  $('.fa-search').toggleClass("spinner"); }, 500);
    
   }
-  if (clickedItem.is('.result-card')||clickedItem.parent().is('.result-card')){
+
+  if (clickedItem.is('.result-card')||clickedItem.parent().is('.result-card')){ // popup recipe modal by clicking on cards
     expandRecipe(clickedItem);
   }
+
+  // toggle saving of favourites anywhere in the page.
   if (clickedItem.is('.add-favourite-button')||clickedItem.parents().is('.add-favourite-button')||clickedItem.is('.remove-favourite-button')||clickedItem.parents().is('.remove-favourite-button')){
     
     if (clickedItem.is(".add-favourite-button")||clickedItem.parents().is('.add-favourite-button')){
@@ -137,15 +147,42 @@ $(document).on('click',function(event){
       removeFromFavourites();
     }
   }
- 
-
+ //toggle adding ingredients to the cart.
+  if (clickedItem.is('#add-to-cart')||clickedItem.is('#add-to-cart-text')||clickedItem.is('#add-to-cart-icon')||clickedItem.parent().is('#add-to-cart-icon')){
+    if (clickedItem.is(".add-cart-button")||clickedItem.parents().is('.add-cart-button')){
+      const buttonEl = document.getElementById("add-to-cart");
+      console.log(buttonEl);
+      buttonEl.classList.add("remove-cart-button");
+      buttonEl.classList.remove("add-cart-button");
+      const cartText = document.getElementById("add-to-cart-text");
+      console.log(cartText);
+      cartText.innerHTML = "Remove from shopping list"
+      addToIngredientList();
+    } else {
+      const buttonEl = document.getElementById("add-to-cart");
+      console.log(buttonEl);
+      buttonEl.classList.add("add-cart-button");
+      buttonEl.classList.remove("remove-cart-button");
+      const cartText = document.getElementById("add-to-cart-text");
+      console.log(cartText);
+      cartText.innerHTML = "Add to shopping list"
+      removeFromIngredientList();
+    }
+  }
+  if (clickedItem.is('#cart-container')||clickedItem.is('#open-cart')||clickedItem.parent().is('#open-cart')){
+    openShoppingCart();
+  }
 });
 
 //expands search bar
 $('#advanced-search-button').click(function(){
   $('#advanced-search').toggle("slow");
-});
 
-$(".add-favourite-button").click(function(){
-    console.log("this is a click!!");
+ 
+if ($('#advanced-search-button').attr("value")==="false"){
+  $('#advanced-search-button').attr("value","true")
+} else {
+  $('#advanced-search-button').attr("value","false")
+}
+
 });

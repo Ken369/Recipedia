@@ -56,6 +56,7 @@ function expandRecipe(clickedItem){
   
 
 function createModal (recipe) {
+
 //---------------------- modal STRUCTURE -----------------------
     //define the modal box and buttons
     modalContainer = $('<div>').addClass("modal-container");
@@ -122,35 +123,49 @@ function createModal (recipe) {
     contentHead.append(subHeadContainer,dietTagContainter);
 
 //----------------- content BODY ------------------------------------
-//creates modal-favourite, add-to-cart and close-window buttons
-buttonContainer = $('<div>').addClass("button-container");
-favouriteButton =  $('<button>');
+    //creates modal-favourite, add-to-cart and close-window buttons
+    closeButton = $('<button>').addClass("close-button");
+        closeButton.attr("id","close-window")
+    closeIcon = $('<i>').addClass("fas fa-times");
+        closeIcon.attr("id","close-icon")
+    closeButton.append(closeIcon); //append icon to button
+    modalBody.append(closeButton); //append icon to modalBody
 
-favouriteText = $('<span>').addClass("favourite-text");
-favouriteText.attr("id","favourite-button-text")
-heartIcon = $('<i>').addClass("fa fa-heart");
-cartButton =  $('<button>').addClass("cart-button");
-cartText = $('<span>').addClass("cart-text");
-cartIcon = $('<i>').addClass("fa fa-cart-plus");
-closeButton = $('<button>').addClass("close-button");
-closeButton.attr("id","close-window")
-closeIcon = $('<i>').addClass("fas fa-times");
-closeIcon.attr("id","close-icon")
+    buttonContainer = $('<div>').addClass("button-container");
+    favouriteButton =  $('<button>');
+    cartButton =  $('<button>');
+        cartButton.attr("id", "add-to-cart");
+
+    favouriteText = $('<span>').addClass("favourite-text");
+        favouriteText.attr("id","favourite-button-text")
+    heartIcon = $('<i>').addClass("fa fa-heart");
+
+    cartText = $('<span>').addClass("cart-text");
+        cartText.attr("id","add-to-cart-text");
+    cartIcon = $('<i>').addClass("fa fa-cart-plus");
+        cartIcon.attr("id","add-to-cart-icon")
+
     console.log(inFavourites(recipe.id));
-    // assemble button container
-    if (inFavourites(recipe.id)){
-        favouriteButton.addClass("remove-favourite-button");
-        favouriteText.text("remove from favourites");
-    } else {
-        favouriteButton.addClass("add-favourite-button");
-        favouriteText.text("save to favourites");
-    }
-    cartText.text("Ingredients -> ");
+    
+        if (inFavourites(recipe.id)){
+            favouriteButton.addClass("remove-favourite-button");
+            favouriteText.text("remove from favourites");
+        } else {
+            favouriteButton.addClass("add-favourite-button");
+            favouriteText.text("save to favourites");
+        }
+        if (inIngredientList(recipe.id)){
+            cartButton.addClass("remove-cart-button");
+            cartText.text("remove from shopping list");
+        } else {
+            cartButton.addClass("add-cart-button");
+            cartText.text("add to shopping list");
+        }
+    //assemble the button container
     favouriteButton.append(favouriteText, heartIcon);
     cartButton.append(cartText, cartIcon);
-    closeButton.append(closeIcon);
     buttonContainer.append(favouriteButton, cartButton);
-    modalBody.append(closeButton)
+
     //define the content body and it's components
     contentBody = $('<section>').addClass("content-body");
     ingredientContainer = $('<div>').addClass("list-group ingredient-container");
@@ -208,4 +223,6 @@ modalContainer.prepend(modalBody)
 
 return modalContainer;
 }
+
+
 
