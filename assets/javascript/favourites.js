@@ -69,22 +69,56 @@ function displayFavourites(){
 
         console.log(recipes);
 
-        favouriteCard = $('<div>').addClass("favourite-card card light-grey darken-1");
-            favouriteCard.attr("id",recipes)
-        wrapper = $('<div>').addClass("row valign-wrapper")
+       const favouriteCard = $('<div>').addClass("card light-grey darken-1");
+            favouriteCard.attr("id",recipes);
 
-        imgWrapper =  $('<img>').addClass("col s2")
-        favouriteImg = $('<img>').addClass("circle responsive-img")
+       const wrapper = $('<div>').addClass("row valign-wrapper");
+
+        const imgWrapper =  $('<img>').addClass("col s2");
+        const favouriteImg = $('<img>').addClass("circle responsive-img");
             favouriteImg.attr("src",recipes.img);
+        imgWrapper.append(favouriteImg);    
 
-        favouriteTitle = $('<h6>').addClass("favourite-title"); 
-            favouriteTitle.text(recipes.title)   
+        const titleWrapper = $('<div>').addClass("col s10"); 
+        favouriteTitle = $('<span>').addClass("black-text"); 
+            favouriteTitle.text(recipes.title); 
+        titleWrapper.append(favouriteTitle);  
 
-       
+        wrapper.append(imgWrapper,titleWrapper);
 
-        favouriteCard.append(favouriteTitle,favouriteImg);
+        favouriteCard.append(wrapper);
 
         $('#favourites').append(favouriteCard);
     }
    
 }
+
+
+/* <div class="card light-grey darken-1">
+<div class="row valign-wrapper">
+  <div class="col s2">
+    <img
+      src="https://via.placeholder.com/150"
+      alt=""
+      class="circle responsive-img"
+    />
+  </div>
+  <div class="col s10">
+    <span class="black-text">Chicken Parma </span>
+  </div>
+</div>
+
+<div class="card light-grey darken-1">
+  <div class="row valign-wrapper">
+    <div class="col s2">
+      <img
+        src="https://via.placeholder.com/150"
+        alt=""
+        class="circle responsive-img"
+      />
+    </div>
+    <div class="col s10">
+      <span class="black-text">Chicken Parma</span>
+    </div>
+  </div>
+</div> */
