@@ -54,45 +54,6 @@ function displayFullRecipe(response) {
 }
 
 function createModal(recipe) {
-  //---------------------- modal STRUCTURE -----------------------
-  //define the modal box and buttons
-  modalContainer = $("<div>").addClass("modal-container");
-  modalBody = $("<div>").addClass("modal-body");
-
-  //-----------------------Content HEADER--------------------------
-  // define the content head and it's components
-  contentHead = $("<section>").addClass("content-head");
-  recipeIMG = $("<img>").addClass("recipe-image");
-  headInfoContainer = $("<div>").addClass("head-info-container");
-  title = $("<h3>").addClass("header-title");
-  // fill out
-  recipeIMG.attr("src", recipe.img);
-  title.text(recipe.title);
-  title.attr("id", recipe.id);
-
-  //create the servings content
-  servingContainer = $("<div>").addClass("serving-container");
-  servings = $("<h5>").addClass("servings");
-  userPlusIcon = $("<i>").addClass("fa fa-user-plus");
-  // fill out and append
-  servings.text("Serves: " + recipe.servings);
-  servingContainer.append(servings, userPlusIcon);
-
-  //Create the time content
-  timeContainer = $("<div>").addClass("time-container");
-  totalBar = $("<div>").addClass("total-bar");
-  prepBar = $("<div>").addClass("prep-bar");
-  timeInfoContainer = $("<div>").addClass("time-info-container");
-  prepTime = $("<h5>").addClass("prep-time");
-  totalTime = $("<h5>").addClass("total-time");
-  stopwatchIcon = $("<i>").addClass("fas fa-stopwatch");
-  //define the content of these components
-  if (recipe.prepTime !== undefined) {
-    prepTime.text("Prep: " + recipe.prepTime + " mins");
-  }
-
-function createModal (recipe) {
-
 //---------------------- modal STRUCTURE -----------------------
     //define the modal box and buttons
     modalContainer = $('<div>').addClass("modal-container");
@@ -259,4 +220,3 @@ modalContainer.prepend(modalBody)
 
 return modalContainer;
 }
-

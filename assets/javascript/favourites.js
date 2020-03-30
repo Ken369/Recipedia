@@ -71,6 +71,7 @@ function displayFavourites(){
 
         favouriteCard = $('<div>').addClass("favourite-card");
             favouriteCard.attr("id",recipes)
+        Wrapper = $('<div>').addClass("")
 
         favouriteTitle = $('<h6>').addClass("favourite-title"); 
             favouriteTitle.text(recipes.title)   
