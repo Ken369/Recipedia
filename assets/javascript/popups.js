@@ -187,14 +187,17 @@ function createModal(recipe) {
             const consistency = ingredient.consistency;
             if (ingredient.measures.metric.unitShort === ingredient.measures.us.unitShort){
                 listItem.text("- "+ingredient.original);
+                listItem.addClass("nutri-info");
             } else if (consistency === "solid" && ingredient.measures.metric.unitShort ==="ml"){
                 listItem.text(ingredient.original);
+                listItem.addClass("nutri-info");
             } else {
                 let amount = ingredient.measures.metric.amount;
                 const units = ingredient.measures.metric.unitShort;
                 amount = Math.round(amount);
                 const metricName = "- "+name+": "+amount+units;
                 listItem.text(metricName);
+                listItem.addClass("nutri-info");
             }
             ingredientList.append(listItem);
         });
