@@ -1,59 +1,95 @@
-
 //------------------------------------------------------------------------------------------------------------------------------
 //-------------------------------------- MODAL CREATION UPON CLICKING A CARD ---------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------
 
 //Clicking recipe in a list
-function expandRecipe(clickedItem){
-    console.log(clickedItem);
-    let recipeId = null;
-    if (clickedItem.is('.result-card')){
-        console.log(clickedItem.attr("id"));
-        recipeId = clickedItem.attr("data-id");
-    } else if (clickedItem.parent().is('.result-card')){
-        console.log(clickedItem.parent('.result-card').attr("id"));
-        recipeId = clickedItem.parent('.result-card').attr("id");
-    }
-   
-    //const recipes = event.currentTarget.innerText;
-    const userKey = randomKey(); //api key
-    const APIkey = "&apiKey=" + userKey;
-    const IngURL =
-      "https://api.spoonacular.com/recipes/" +
-      recipeId +
-      "/information?includeNutrition=false" +
-      APIkey;
-      ajaxRequest(IngURL,displayFullRecipe);
-}
-    
-    function displayFullRecipe(response){
-      console.log(response);
-      const recipe = {
-        title: response.title,
-        id: response.id,
-        dietTags:{
-            vegetarian:{status:response.vegetarian,displayText:"Vegetarian"},
-            glutenFree:{status:response.glutenFree,displayText:"Gluten free"},
-            vegan:{status:response.vegan,displayText:"Vegan"},
-            dairyFree:{status:response.dairyFree,displayText:"Dairy free"},
-            lowFodmap:{status:response.lowFodmap,displayText:"Low fodmap"},
-        },
-        img: response.image,
-        servings: response.servings,
-        prepTime: response.preparationMinutes,
-        totalTime: response.readyInMinutes,
-        ingredientList: response.extendedIngredients,
-        methodList: response.analyzedInstructions[0].steps
-      }
-
-      ADDtempfile(recipe); // saves a temp copy in local under the key "temp"
-      //creates the modal
-    const recipeModal = createModal(recipe);
-    
-    //append modal to #modal-goes-here 
-    $('#modal-goes-here').append(recipeModal);
+function expandRecipe(clickedItem) {
+  console.log(clickedItem);
+  let recipeId = null;
+  if (clickedItem.is(".result-card")) {
+    console.log(clickedItem.attr("id"));
+    recipeId = clickedItem.attr("data-id");
+  } else if (clickedItem.parent().is(".result-card")) {
+    console.log(clickedItem.parent(".result-card").attr("id"));
+    recipeId = clickedItem.parent(".result-card").attr("id");
   }
-  
+
+  //const recipes = event.currentTarget.innerText;
+  const userKey = randomKey(); //api key
+  const APIkey = "&apiKey=" + userKey;
+  const IngURL =
+    "https://api.spoonacular.com/recipes/" +
+    recipeId +
+    "/information?includeNutrition=false" +
+    APIkey;
+  ajaxRequest(IngURL, displayFullRecipe);
+}
+
+function displayFullRecipe(response) {
+  console.log(response);
+  const recipe = {
+    title: response.title,
+    id: response.id,
+    dietTags: {
+      vegetarian: { status: response.vegetarian, displayText: "Vegetarian" },
+      glutenFree: { status: response.glutenFree, displayText: "Gluten free" },
+      vegan: { status: response.vegan, displayText: "Vegan" },
+      dairyFree: { status: response.dairyFree, displayText: "Dairy free" },
+      lowFodmap: { status: response.lowFodmap, displayText: "Low fodmap" }
+    },
+    img: response.image,
+    servings: response.servings,
+    prepTime: response.preparationMinutes,
+    totalTime: response.readyInMinutes,
+    ingredientList: response.extendedIngredients,
+    methodList: response.analyzedInstructions[0].steps
+  };
+
+  ADDtempfile(recipe); // saves a temp copy in local under the key "temp"
+  //creates the modal
+  const recipeModal = createModal(recipe);
+
+  //append modal to #modal-goes-here
+  $("#modal-goes-here").append(recipeModal);
+}
+
+function createModal(recipe) {
+  //---------------------- modal STRUCTURE -----------------------
+  //define the modal box and buttons
+  modalContainer = $("<div>").addClass("modal-container");
+  modalBody = $("<div>").addClass("modal-body");
+
+  //-----------------------Content HEADER--------------------------
+  // define the content head and it's components
+  contentHead = $("<section>").addClass("content-head");
+  recipeIMG = $("<img>").addClass("recipe-image");
+  headInfoContainer = $("<div>").addClass("head-info-container");
+  title = $("<h3>").addClass("header-title");
+  // fill out
+  recipeIMG.attr("src", recipe.img);
+  title.text(recipe.title);
+  title.attr("id", recipe.id);
+
+  //create the servings content
+  servingContainer = $("<div>").addClass("serving-container");
+  servings = $("<h5>").addClass("servings");
+  userPlusIcon = $("<i>").addClass("fa fa-user-plus");
+  // fill out and append
+  servings.text("Serves: " + recipe.servings);
+  servingContainer.append(servings, userPlusIcon);
+
+  //Create the time content
+  timeContainer = $("<div>").addClass("time-container");
+  totalBar = $("<div>").addClass("total-bar");
+  prepBar = $("<div>").addClass("prep-bar");
+  timeInfoContainer = $("<div>").addClass("time-info-container");
+  prepTime = $("<h5>").addClass("prep-time");
+  totalTime = $("<h5>").addClass("total-time");
+  stopwatchIcon = $("<i>").addClass("fas fa-stopwatch");
+  //define the content of these components
+  if (recipe.prepTime !== undefined) {
+    prepTime.text("Prep: " + recipe.prepTime + " mins");
+  }
 
 function createModal (recipe) {
 
@@ -223,6 +259,4 @@ modalContainer.prepend(modalBody)
 
 return modalContainer;
 }
-
-
 

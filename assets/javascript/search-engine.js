@@ -1,8 +1,6 @@
 // --------------on start up------------------------
 $("#advanced-search").hide();
 
-
-
 //---------------functions-----------------
 function randomKey() {
   const KenKey = "c969a48f9cee4515b05f7efc8cf78b6b";
@@ -67,11 +65,11 @@ function constructEndpointQuery() {
   return endpoint;
 }
 
-function ajaxRequest(URL,callback){
-    $.ajax({
-        url: URL,
-        method: "GET"
-      }).then(callback);//Display results file in another file
+function ajaxRequest(URL, callback) {
+  $.ajax({
+    url: URL,
+    method: "GET"
+  }).then(callback); //Display results file in another file
 }
 
 // ----------------------------- search functions --------------------------------------------
@@ -101,11 +99,8 @@ $("#advanced-search").on("keypress", function(event) {
   }
 });
 
-
-
 // listners for all dynamic content, excutes functions depending on content
-$(document).on('click',function(event){
-
+$(document).on("click", function(event) {
   clickedItem = $(event.target);
 
   if (clickedItem.is('#close-icon, #close-window')||clickedItem.parent().is('#close-icon, #close-window')){ // close modals
@@ -116,37 +111,78 @@ $(document).on('click',function(event){
     $('#search-results').empty();
     $('.fa-search').toggleClass("spinner");
     search();
-    setTimeout(() => {  $('.fa-search').toggleClass("spinner"); }, 500);
-   
+    setTimeout(() => {
+      $(".fa-search").toggleClass("spinner");
+    }, 500);
   }
 
   if (clickedItem.is('.result-card')||clickedItem.parent().is('.result-card')){ // popup recipe modal by clicking on cards
     expandRecipe(clickedItem);
   }
-
-  // toggle saving of favourites anywhere in the page.
-  if (clickedItem.is('.add-favourite-button')||clickedItem.parents().is('.add-favourite-button')||clickedItem.is('.remove-favourite-button')||clickedItem.parents().is('.remove-favourite-button')){
-    
-    if (clickedItem.is(".add-favourite-button")||clickedItem.parents().is('.add-favourite-button')){
+  
+  if (clickedItem.is(".nutri-info")) {
+    console.log(clickedItem.text());
+    const nutrition = clickedItem.text();
+    const nutriURL =
+      "https://api.edamam.com/api/nutrition-data?app_id=ecba879f&app_key=afb754d6090d97af478a5c4ce9b83681&ingr=" +
+      nutrition;
+    ajaxRequest(nutriURL, function(response) {
+      console.log(response);
+      console.log(response.totalNutrients.FAT.label);
+      const fat =
+        response.totalNutrients.FAT.quantity + response.totalNutrients.FAT.unit;
+      const carbs =
+        response.totalNutrients.CHOCDF.quantity +
+        response.totalNutrients.CHOCDF.unit;
+      const sugars =
+        response.totalNutrients.SUGAR.quantity +
+        response.totalNutrients.SUGAR.unit;
+      const cholesterol =
+        response.totalNutrients.CHOLE.quantity +
+        response.totalNutrients.CHOLE.unit;
+      alert(
+        "Calories:" +
+          response.calories +
+          "\n" +
+          "Fat:" +
+          fat +
+          "\n" +
+          "Carbs:" +
+          carbs +
+          "\n" +
+          "Sugars:" +
+          sugars +
+          "\n" +
+          "Cholesterol:" +
+          cholesterol
+      );
+    });
+  }
+  
+  if (clickedItem.is(".add-favourite-button") ||clickedItem.parents().is(".add-favourite-button") ||clickedItem.is(".remove-favourite-button") ||clickedItem.parents().is(".remove-favourite-button")) {
+    if (clickedItem.is(".add-favourite-button") ||clickedItem.parents().is(".add-favourite-button")) {
       const buttonEl = document.getElementsByClassName("add-favourite-button");
       console.log(buttonEl);
       buttonEl[0].classList.add("remove-favourite-button");
       buttonEl[0].classList.remove("add-favourite-button");
       const favouriteText = document.getElementById("favourite-button-text");
       console.log(favouriteText);
-      favouriteText.innerHTML = "Remove from favourites"
+      favouriteText.innerHTML = "Remove from favourites";
       addToFavourites();
     } else {
-      const buttonEl = document.getElementsByClassName("remove-favourite-button");
+      const buttonEl = document.getElementsByClassName(
+        "remove-favourite-button"
+      );
       console.log(buttonEl);
       buttonEl[0].classList.add("add-favourite-button");
       buttonEl[0].classList.remove("remove-favourite-button");
       const favouriteText = document.getElementById("favourite-button-text");
       console.log(favouriteText);
-      favouriteText.innerHTML = "Add to favourites"
+      favouriteText.innerHTML = "Add to favourites";
       removeFromFavourites();
     }
   }
+  
  //toggle adding ingredients to the cart.
   if (clickedItem.is('#add-to-cart')||clickedItem.is('#add-to-cart-text')||clickedItem.is('#add-to-cart-icon')||clickedItem.parent().is('#add-to-cart-icon')){
     if (clickedItem.is(".add-cart-button")||clickedItem.parents().is('.add-cart-button')){
@@ -177,12 +213,10 @@ $(document).on('click',function(event){
 //expands search bar
 $('#advanced-search-button').click(function(){
   $('#advanced-search').toggle("slow");
-
- 
-if ($('#advanced-search-button').attr("value")==="false"){
-  $('#advanced-search-button').attr("value","true")
-} else {
-  $('#advanced-search-button').attr("value","false")
-}
-
+  
+  if ($('#advanced-search-button').attr("value")==="false"){
+    $('#advanced-search-button').attr("value","true")
+  } else {
+    $('#advanced-search-button').attr("value","false")
+  }
 });

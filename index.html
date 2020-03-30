@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipedia</title>
     <!-- font-awesome CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+      integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs="
+      crossorigin="anonymous"
+    ></script>
     <!-- Google Fonts Link -->
     <link href="https://fonts.googleapis.com/css?family=Fugaz+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap" rel="stylesheet">
     <!-- custom css -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/popups.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/popups.css" />
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
     <!--  MDC icons-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
     <!-- NavBar -->
     <header>
-        <nav>
+      <nav>
         <div class="nav-wrapper">
-        <a href="#!" class="brand-logo"><img src="assets/images/logo-01.png" width="115px"></a>
+          <a href="#!" class="brand-logo"
+            ><img src="assets/images/logo-01.png" width="115px"
+          /></a>
         </div>
-        </nav>
+      </nav>
     </header>
-    
+
     <main>
-        <div class="container">
-            <p class="Welcome">Welcome to Recepedia</p>
+      <div class="container">
+        <p class="Welcome">Welcome to Recepedia</p>
         <!--Main Body Container w/Grids-->
         <div class="row search" style="margin-left: 0px;margin-right: 0px;">
             <div class="col s2 m3">
@@ -70,76 +81,92 @@
             </div>
             <div class="col s2 m3"></div>
         </div>
-    
         <div class="row">
-            <!--Favourites Bar-->
-            <div class="col s12 m4">
+          <!--Favourites Bar-->
+          <div class="col s12 m4">
+            <div class="card light-grey darken-1">
+              <aside id="favourites">
                 <div class="card light-grey darken-1">
-                    <aside id="favourites">
-                        <div class="card light-grey darken-1">
-                            <div class="row valign-wrapper">
-                                <div class="col s2"><img src="https://via.placeholder.com/150" alt="" class="circle responsive-img">
-                                </div>
-                                <div class="col s10"><span class="black-text">Chicken Parma </span>
-                                </div>
-                            </div>  
-                            <div class="card light-grey darken-1">
-                                <div class="row valign-wrapper">
-                                    <div class="col s2"><img src="https://via.placeholder.com/150" alt="" class="circle responsive-img">
-                                    </div>
-                                    <div class="col s10"><span class="black-text">Chicken Parma</span>
-                                    </div>
-                                </div>               
-                            </div>
-                        </div>                
-                    </aside>
-                </div>
-            </div>
-            <!--This is where the cards will be displayed sequentially-->
-            <div class="col s12 m8">     
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title">Results</span>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia, ipsam. Veritatis cum recusandae ad ratione iusto? Earum, minima! Corporis dolores temporibus ex aut distinctio eos labore aspernatur? Qui, nisi. Ad.</p>
-                        <div class="card-action">
-                        </div>
-                        <!--This is where the search results are displayed-->
-                        <div id="search-results">
-                        </div>
+                  <div class="row valign-wrapper">
+                    <div class="col s2">
+                      <img
+                        src="https://via.placeholder.com/150"
+                        alt=""
+                        class="circle responsive-img"
+                      />
                     </div>
+                    <div class="col s10">
+                      <span class="black-text">Chicken Parma </span>
+                    </div>
+                  </div>
+                  <div class="card light-grey darken-1">
+                    <div class="row valign-wrapper">
+                      <div class="col s2">
+                        <img
+                          src="https://via.placeholder.com/150"
+                          alt=""
+                          class="circle responsive-img"
+                        />
+                      </div>
+                      <div class="col s10">
+                        <span class="black-text">Chicken Parma</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>    
+              </aside>
+            </div>
+          </div>
+          <!--This is where the cards will be displayed sequentially-->
+          <div class="col s12 m8">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Results</span>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Officia, ipsam. Veritatis cum recusandae ad ratione iusto?
+                  Earum, minima! Corporis dolores temporibus ex aut distinctio
+                  eos labore aspernatur? Qui, nisi. Ad.
+                </p>
+                <div class="card-action"></div>
+                <!--This is where the search results are displayed-->
+                <div id="search-results"></div>
+              </div>
+            </div>
+          </div>
         </div>
-    
+
         <section id="modal-goes-here"></section>
-        </div>
+      </div>
     </main>
-    
+
     <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Footer Content</h5>
+            <p class="grey-text text-lighten-4">
+              You can use rows and columns here to organize your footer content.
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
         <div class="container">
-          <div class="row">
-            <div class="col l6 s12">
-              <h5 class="white-text">Footer Content</h5>
-              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
           © 2020 Wayne, Vasavi & Ken
-          </div>
         </div>
+      </div>
     </footer>
-      
+
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- custom js -->
