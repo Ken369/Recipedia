@@ -8,6 +8,16 @@ body {
 main {
 }
 
+.Welcome{
+  text-align: center;
+  font-size: xx-large;
+  color: teal;
+}
+
+.Explore{
+  text-align: center;
+  font-size: large;
+}
 h4.list-title {
   font-weight: bold;
 }
@@ -19,6 +29,9 @@ body {
 }
 .nav-wrapper {
   background-color: teal;
+}
+#favourites{
+  text-align: center;
 }
 
 fieldset {
@@ -87,16 +100,22 @@ button,
 /* Please change these cart colours, their horrible, but it's late and i'm moving on haha. */
 #open-cart{
     font-size: 40px;
-    color: sandybrown;
+    color: white;
 }
 #cart-container{
     background-color: teal;
     padding: 15px;
     border-radius: 5px;
+<<<<<<< HEAD
     border:none;
     
+=======
+>>>>>>> 347f8972c27e3fbef877e6f87cdc9a735d22b9f3
 }
 
+footer.page-footer{
+  background-color: grey;
+}
 
 /* --------------------------- favourites card css-------------------------------------- */
 aside{

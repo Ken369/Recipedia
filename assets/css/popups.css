@@ -10,7 +10,7 @@
     z-index: 1;
     display: block;
     position: fixed;
-    width: 100%;
+    width: 20px;
     height:100%;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -237,9 +237,9 @@
 /* -------------------- result Cards CSS ------------------------------------- */
 /* --------------------------------------------------------------------------- */
 .result-card{
-    padding:0;
+    padding:10px;
     margin:20px;
-    width:fit-content;
+    width:100%;
     height:auto;
     background-color: wheat;
     border: 2px solid teal;
@@ -255,6 +255,7 @@
     margin-block-start: 50%;
     font-family: 'Fugaz One', cursive;
     font-size: 25px;
+    border-radius: 10px;
     display:inherit;
     float: right;
     position: absolute;
@@ -266,13 +267,14 @@
 
 .image-card{
     display:block;
-    padding:0;
+    padding:10px;
     margin:0;
-    max-width:250px;
+    max-width:200px;
     height:auto;
   }
 
 .time-card{
+    border-radius: 5px;
     font-size: 15px;
     background-color: teal;
     padding:15px;
@@ -287,7 +289,7 @@
     padding:20px 40px;
     width: 80%;
     border: 2px solid teal;
-    background-color: #ffff88;
+    background-color: white;
     margin:auto;
     border-radius: 5px;
     color:black
