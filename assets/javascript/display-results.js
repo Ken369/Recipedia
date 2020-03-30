@@ -1,38 +1,34 @@
 function displayResults(ajaxResponse) {
-
   var recipeArray = ajaxResponse.results;
   console.log(ajaxResponse);
 
   for (var i = 0; i < recipeArray.length; i++) {
-    //var recipeId = recipeArray[i].id;
     const info = {
-      image:ajaxResponse.baseUri + recipeArray[i].image,
-      title:recipeArray[i].title,
-      id:recipeArray[i].id,
-      totalTime:recipeArray[i].readyInMinutes,
-    }
-    const card = resultCard(info)
+      image: ajaxResponse.baseUri + recipeArray[i].image,
+      title: recipeArray[i].title,
+      id: recipeArray[i].id,
+      totalTime: recipeArray[i].readyInMinutes
+    };
+    const card = resultCard(info);
     $("#search-results").append(card);
   }
 }
 
-function resultCard (info) {
-  card = $('<div>').addClass("result-card");
-  img = $('<img>').addClass("image-card");
-  totalTime = $('<p>').addClass("time-card");
-  banner = $('<h6>').addClass("banner");
-      // fill out information;
-      img.attr("src",info.image);
-      totalTime.text("Ready in: "+info.totalTime+"mins");
-      banner.text(info.title);
-      //append all to card
-  card.append(banner,img,totalTime);
-  card.attr("id",info.id);
-  
-  return card;
-  
-}
+function resultCard(info) {
+  card = $("<div>").addClass("result-card");
+  img = $("<img>").addClass("image-card");
+  totalTime = $("<p>").addClass("time-card");
+  banner = $("<h6>").addClass("banner");
+  // fill out information;
+  img.attr("src", info.image);
+  totalTime.text("Ready in: " + info.totalTime + "mins");
+  banner.text(info.title);
+  //append all to card
+  card.append(banner, img, totalTime);
+  card.attr("id", info.id);
 
+  return card;
+}
 
 // var list = $("<ul>");
 // var listRecipesTitle = $('<a href="#">');
@@ -49,7 +45,6 @@ function resultCard (info) {
 // var img = $("<img>");
 // img.attr("src", ajaxResponse.baseUri + recipeArray[i].image);
 // img.addClass("Image-size");
-
 
 ` 
 <div class="card light-grey darken-1">
@@ -71,4 +66,4 @@ function resultCard (info) {
         </div>
     </div>               
 </div>
-`
+`;

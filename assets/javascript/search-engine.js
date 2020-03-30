@@ -1,8 +1,6 @@
 // --------------on start up------------------------
 $("#advanced-search").hide();
 
-
-
 //---------------functions-----------------
 function randomKey() {
   const KenKey = "c969a48f9cee4515b05f7efc8cf78b6b";
@@ -67,16 +65,16 @@ function constructEndpointQuery() {
   return endpoint;
 }
 
-function ajaxRequest(URL,callback){
-    $.ajax({
-        url: URL,
-        method: "GET"
-      }).then(callback);//Display results file in another file
+function ajaxRequest(URL, callback) {
+  $.ajax({
+    url: URL,
+    method: "GET"
+  }).then(callback); //Display results file in another file
 }
 
-function search(){
-url = constructEndpointQuery();
-ajaxRequest(url,displayResults);
+function search() {
+  url = constructEndpointQuery();
+  ajaxRequest(url, displayResults);
 }
 
 //----------------------------------LISTENERS----------------------------------------------------
@@ -96,56 +94,105 @@ $("#advanced-search").on("keypress", function(event) {
   }
 });
 
-
-
 // listners for all dynamic content, excutes functions depending on content
-$(document).on('click',function(event){
-
+$(document).on("click", function(event) {
   clickedItem = $(event.target);
 
-  if (clickedItem.is('#close-icon, #close-window')||clickedItem.parent().is('#close-icon, #close-window')){
-      $('.modal-container').remove();
+  if (
+    clickedItem.is("#close-icon, #close-window") ||
+    clickedItem.parent().is("#close-icon, #close-window")
+  ) {
+    $(".modal-container").remove();
   }
-  if (clickedItem.is('.fa-search')||clickedItem.parent().is('.fa-search')){
-    $('.fa-search').toggleClass("spinner");
+  if (clickedItem.is(".fa-search") || clickedItem.parent().is(".fa-search")) {
+    $(".fa-search").toggleClass("spinner");
     search();
-    setTimeout(() => {  $('.fa-search').toggleClass("spinner"); }, 500);
-   
+    setTimeout(() => {
+      $(".fa-search").toggleClass("spinner");
+    }, 500);
   }
-  if (clickedItem.is('.result-card')||clickedItem.parent().is('.result-card')){
+  if (
+    clickedItem.is(".result-card") ||
+    clickedItem.parent().is(".result-card")
+  ) {
     expandRecipe(clickedItem);
   }
-  if (clickedItem.is('.add-favourite-button')||clickedItem.parents().is('.add-favourite-button')||clickedItem.is('.remove-favourite-button')||clickedItem.parents().is('.remove-favourite-button')){
-    
-    if (clickedItem.is(".add-favourite-button")||clickedItem.parents().is('.add-favourite-button')){
+  if (clickedItem.is(".nutri-info")) {
+    console.log(clickedItem.text());
+    const nutrition = clickedItem.text();
+    const nutriURL =
+      "https://api.edamam.com/api/nutrition-data?app_id=ecba879f&app_key=afb754d6090d97af478a5c4ce9b83681&ingr=" +
+      nutrition;
+    ajaxRequest(nutriURL, function(response) {
+      console.log(response);
+      console.log(response.totalNutrients.FAT.label);
+      const fat =
+        response.totalNutrients.FAT.quantity + response.totalNutrients.FAT.unit;
+      const carbs =
+        response.totalNutrients.CHOCDF.quantity +
+        response.totalNutrients.CHOCDF.unit;
+      const sugars =
+        response.totalNutrients.SUGAR.quantity +
+        response.totalNutrients.SUGAR.unit;
+      const cholesterol =
+        response.totalNutrients.CHOLE.quantity +
+        response.totalNutrients.CHOLE.unit;
+      alert(
+        "Calories:" +
+          response.calories +
+          "\n" +
+          "Fat:" +
+          fat +
+          "\n" +
+          "Carbs:" +
+          carbs +
+          "\n" +
+          "Sugars:" +
+          sugars +
+          "\n" +
+          "Cholesterol:" +
+          cholesterol
+      );
+    });
+  }
+  if (
+    clickedItem.is(".add-favourite-button") ||
+    clickedItem.parents().is(".add-favourite-button") ||
+    clickedItem.is(".remove-favourite-button") ||
+    clickedItem.parents().is(".remove-favourite-button")
+  ) {
+    if (
+      clickedItem.is(".add-favourite-button") ||
+      clickedItem.parents().is(".add-favourite-button")
+    ) {
       const buttonEl = document.getElementsByClassName("add-favourite-button");
       console.log(buttonEl);
       buttonEl[0].classList.add("remove-favourite-button");
       buttonEl[0].classList.remove("add-favourite-button");
       const favouriteText = document.getElementById("favourite-button-text");
       console.log(favouriteText);
-      favouriteText.innerHTML = "Remove from favourites"
+      favouriteText.innerHTML = "Remove from favourites";
       addToFavourites();
     } else {
-      const buttonEl = document.getElementsByClassName("remove-favourite-button");
+      const buttonEl = document.getElementsByClassName(
+        "remove-favourite-button"
+      );
       console.log(buttonEl);
       buttonEl[0].classList.add("add-favourite-button");
       buttonEl[0].classList.remove("remove-favourite-button");
       const favouriteText = document.getElementById("favourite-button-text");
       console.log(favouriteText);
-      favouriteText.innerHTML = "Add to favourites"
+      favouriteText.innerHTML = "Add to favourites";
       removeFromFavourites();
     }
   }
- 
-
 });
 
 //expands search bar
-$('#advanced-search-button').click(function(){
-  $('#advanced-search').toggle("slow");
+$("#advanced-search-button").click(function() {
+  $("#advanced-search").toggle("slow");
 });
 
-$(".add-favourite-button").click(function(){
-    console.log("this is a click!!");
+$(".add-favourite-button").click(function() {
+  console.log("this is a click!!");
 });
