@@ -64,18 +64,31 @@
     color: orange;
 }
 
-.cart-button {
-    border:0px solid;
+.add-cart-button {
+    border:none;
     padding:10px;
     margin:5px;
     border-radius: 5px;
     background-color: #C1382A;
     color: white;
-    border-color: black;
+
 }
 
-:hover.cart-button {
-    background-color: rgb(165, 48, 35);
+:hover.add-cart-button, :focus.add-cart-button {
+    background-color: #a13226;
+}
+
+.remove-cart-button {
+    border:none;
+    padding:10px;
+    margin:5px;
+    border-radius: 5px;
+    background-color: white;
+    color: #C1382A;
+}
+
+:hover.remove-cart-button, :focus.remove-cart-button {
+    background-color: #bbbbbb;
 }
 
 
@@ -227,16 +240,21 @@
     height:auto;
     background-color: wheat;
     border: 2px solid teal;
+    transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.2s;
+}
+.result-card:hover{
+    cursor: pointer;
+    transform: scale(1.025);
+
 }
 
 .banner {
-    margin-block-start: 200px;
+    margin-block-start: 50%;
     font-family: 'Fugaz One', cursive;
     font-size: 25px;
     display:inherit;
     float: right;
     position: absolute;
-    z-index: 1;
     max-width: 250px;
     font-size: 15px;
     padding:20px;
@@ -262,7 +280,37 @@
 /* --------------------------------------------------------------------------- */
 /* -------------------- Shopping Cart CSS ------------------------------------ */
 /* --------------------------------------------------------------------------- */
+.shopping-body {
+    padding:20px 40px;
+    width: 80%;
+    border: 2px solid teal;
+    background-color: #ffff88;
+    margin:auto;
+    border-radius: 5px;
+    color:black
+}
 
+.shopping-title,.aisle-title,.list-item{
+    font-family: 'Patrick Hand', cursive;
+}
+
+.shopping-title{
+    text-align: center;
+    margin-top: -40px;
+}
+
+.aisle-title{
+    font-size: x-large;
+    font-weight: 600;
+    text-decoration: underline;
+}
+.list-item{
+    font: large;
+    font-weight: 600;
+    letter-spacing: 1px;
+    list-style-position: inside;
+    list-style-type: decimal;
+}
 
 /* --------------------------------------------------------------------------- */
 /* -------------------- END Shopping Cart ------------------------------------ */

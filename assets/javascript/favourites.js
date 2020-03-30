@@ -3,6 +3,10 @@
 //--------------------------------------------------------------------
 
 const favouritedRecipes = retreiveFavourites();
+$(document).ready(function(){
+    displayFavourites();
+});
+
 
 //--------------------------------------------------------------------
 //--------------------------- functions ------------------------------
@@ -54,10 +58,29 @@ function ADDtempfile(recipe) {
 //--------------------------------------------------------------------
 //--------------------------- listeners ------------------------------
 //--------------------------------------------------------------------
-// $('.add-favourite-btn').click(prepareToAdd(event));
 
-// $('.remove-favourite-btn').click(prepareToRemove(event));
 
 //--------------------------------------------------------------------
-//----------------------- global variables ---------------------------
+//--------------------- display favourites ---------------------------
 //--------------------------------------------------------------------
+
+function displayFavourites(){
+    for (const recipes in favouritedRecipes){
+
+        console.log(recipes);
+
+        favouriteCard = $('<div>').addClass("favourite-card");
+            favouriteCard.attr("id",recipes)
+
+        favouriteTitle = $('<h6>').addClass("favourite-title"); 
+            favouriteTitle.text(recipes.title)   
+
+        favouriteImg = $('<img>').addClass("favourite-img")
+            favouriteImg.attr("src",recipes.img);
+
+        favouriteCard.append(favouriteTitle,favouriteImg);
+
+        $('#favourites').append(favouriteCard);
+    }
+   
+}

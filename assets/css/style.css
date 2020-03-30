@@ -71,17 +71,46 @@ button,
   background-color: #c1382a;
 }
 
-.fa-search {
-  font-size: 20px;
-  margin: 10px;
-  cursor: pointer;
+.fa-search{
+    font-size: 20px;
+    margin:10px;
+    cursor: pointer;
 }
-.fa-search:hover,
-.fa-search:focus {
-  transform: scale(1.05);
-  color: teal;
+.fa-search:hover, .fa-search:focus{
+    transform: scale(1.05);
+    color: teal;
 }
-.spinner {
-  transform: rotate3d(1, 1, 0, 180deg);
-  transition: cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s;
+.spinner{
+    transform: rotate3d(1,1,0,180deg);
+    transition:cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s;
+}
+/* Please change these cart colours, their horrible, but it's late and i'm moving on haha. */
+#open-cart{
+    font-size: 40px;
+    color: sandybrown;
+}
+#cart-container{
+    background-color: teal;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid orange;
+}
+
+
+/* --------------------------- favourites card css-------------------------------------- */
+
+.favourite-card{
+    width:100px;
+    height:auto;
+}
+
+.favourite-img{
+    max-width: 100px;
+    height: auto;
+
+}
+
+.favourite-title{
+    font-size: ;
+
 }

@@ -11,10 +11,8 @@
       crossorigin="anonymous"
     ></script>
     <!-- Google Fonts Link -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Fugaz+One&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Fugaz+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap" rel="stylesheet">
     <!-- custom css -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/popups.css" />
@@ -46,64 +44,43 @@
         <p class="Welcome">Welcome to Recepedia</p>
         <!--Main Body Container w/Grids-->
         <div class="row search" style="margin-left: 0px;margin-right: 0px;">
-          <div class="col s2 m3"></div>
-          <div class="col s8 m6">
-            <fieldset id="search-bar">
-              <form class="main-search-bar">
-                <input
-                  type="text"
-                  id="search-query"
-                  placeholder="search food here!"
-                />
-                <i class="fa fa-search"></i>
-              </form>
-              <form id="advanced-search">
-                <!-- dropdown box for cuisine type possibly a search bar and dropdown in one, to search for all dropdowns-->
-                <div>
-                  <input
-                    type="text"
-                    id="cuisine"
-                    placeholder="filter by cuisine....Italian?"
-                  />
-                  <label for="cuisine">cuisine</label>
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    id="diet"
-                    placeholder="Particular Diet?"
-                    style="color:teal"
-                  />
-                  <label for="diet">Diet</label>
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    id="exclude-ingredients"
-                    placeholder="exclude any ingredients?"
-                  />
-                  <label for="exclude-ingredients">excluding ingredients</label>
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    id="intolerences"
-                    placeholder="have any intolerences?"
-                  />
-                  <label for="intolerences"> intolerences</label>
-                </div>
-              </form>
-            </fieldset>
-            <button
-              id="advanced-search-button"
-              class="waves-effect waves-light btn"
-            >
-              Advanced Search
-            </button>
-          </div>
-          <div class="col s2 m3"></div>
-        </div>
+            <div class="col s2 m3">
+                <!-- SHOPPING CART BUTTON MOVE AHYWHERE YOU WANT -->
+                <button id="cart-container">
+                <i class="fa fa-cart-plus" id="open-cart"></i>
+                </button>
 
+            </div>
+            <div class="col s8 m6">
+                <fieldset id="search-bar">
+                    <form class="main-search-bar">
+                        <input type="text" id="search-query" placeholder="search food here!">
+                        <i class="fa fa-search"></i>
+                    </form>
+                    <form id="advanced-search">
+                        <!-- dropdown box for cuisine type possibly a search bar and dropdown in one, to search for all dropdowns-->
+                     <div>
+                         <input type="text" id="cuisine" placeholder="filter by cuisine....Italian?">
+                        <label for="cuisine">cuisine</label>
+                    </div>
+                     <div>
+                         <input type="text" id="diet" placeholder="Particular Diet?" style="color:teal">
+                        <label for="diet">Diet</label>
+                    </div>
+                     <div>
+                         <input type="text" id="exclude-ingredients" placeholder="exclude any ingredients?">
+                        <label for="exclude-ingredients">excluding ingredients</label>
+                    </div>
+                     <div>
+                         <input type="text" id=intolerences placeholder="have any intolerences?">
+                        <label for="intolerences"> intolerences</label>
+                      </div>
+                    </form>
+                </fieldset>
+                <button id="advanced-search-button" class="waves-effect waves-light btn" value="false">Advanced Search</button>
+            </div>
+            <div class="col s2 m3"></div>
+        </div>
         <div class="row">
           <!--Favourites Bar-->
           <div class="col s12 m4">
@@ -198,5 +175,7 @@
     <script src="./assets/javascript/search-engine.js"></script>
     <script src="./assets/javascript/display-results.js"></script>
     <script src="./assets/javascript/popups.js"></script>
-  </body>
+    <script src="./assets/javascript/shopping-list.js"></script>
+</body>
+
 </html>
