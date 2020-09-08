@@ -9,19 +9,5 @@ Ingredients are then calculated to their cost.
 -Vasavi
 -Ken
 
-##Timeline ::Write notes here to summarise Steps::
-> 18th 
-General Discussion
-Git Repo Created by Wayne
-
-> 21st 
-
-> 23rd 
-
-> 25th 
-
-> 28th 
-Last Class Meeting
-
-> 30th 
-Project #1 Presentations 
+# Test the working App!
+https://recipediaaustralia.netlify.app/
